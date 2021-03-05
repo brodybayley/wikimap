@@ -1,11 +1,15 @@
 # WikiMap User Stories
 
+* Guest = unauthenticated users
+
+* Users = authenticated/logged in users
+
 ## Must Haves
-* As a user, I want to see a list of available maps, because I want to know what my options are
+* As a guest, I want to see a list of available maps, because I want to know what my options are
 
-* As a user I want a map to be capable of having many points because I want to be able to plan routes
+* As a guest I want a map to be capable of having many points because I want to be able to plan routes
 
-* As a user, I want to be able to view an individual map, because I want to plan my routes for my objectives
+* As a guest, I want to be able to view an individual map, because I want to plan my routes for my objectives
 
 * As a user, I want to be able to create and modify maps to have my own customized maps for different projects. 
 
@@ -19,9 +23,11 @@
 
 * Given that I am an authenticated user, when I create a map, I want it to be successfully added to the database of maps
 
-* As a user, I want to be able to click on a map point and view the title, description and image because I want to see the map point details
+* As a guest, I want to be able to click on a map point and view the title, description and image because I want to see the map point details
 
 * As a user, I want to be able to favourite a map because I want to add it to my profile
+
+* As a user, I don't want other users to delete map or pins that I created, because they belong to me
 
 ## Nice to Haves
 
@@ -36,8 +42,6 @@
 * As a user, I want to be able to filter results by my preferences because I want my user experience to be tailored to my needs
 
 * As a user, I want to be able to tap on a location pin and have it open up on Google Maps, because I want to know how to get to the location pin to share my location with other interested parties. 
-
-
 
 <!-- 
 Andy's Notes:
@@ -64,4 +68,4 @@ Requirements:
 [x] authenticated users can modify maps (add, edit, remove points)
 [x] users can favourite a map
 [x] users have profiles, indicating their favourite maps and maps they've contributed to
-[] use http://leafletjs.com/ or https://developers.google.com/maps/
+[ ] use http://leafletjs.com/ or https://developers.google.com/maps/
