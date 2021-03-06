@@ -3,17 +3,25 @@
   * id
   * email
   * password
-  * contribution_map_id
 
 * map
   * id
-  * creator_id (1 to 1)
-  * contributor_id (1 to many)
-
-* pins 
-  * id
-  * map_id
+  * user_id
   * title
   * description
+  * created_on
+
+* points 
+  * id
+  * map_id
+  * user_id
+  * point_title
+  * point_description
   * image
-  * google_map_url (nice to have)
+  * longitude
+  * latitude
+
+* favourites
+  * id
+  * user_id
+  * map_id

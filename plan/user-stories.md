@@ -17,7 +17,7 @@
 
 * As a user, I want to have a profile because I want to keep track of my favourite maps and my own projects
 
-* As a user, I want only authenticated users to be able to collaborate on my maps because I want to keep track of all the changes to my projects and I am afraid of security leaks
+* As a user, I want only authenticated users to be able to collaborate on my maps because I want to keep track of all the  changes to my projects and I am afraid of security leaks
 
 * As a user, I want to be able to modify my maps, because my opinions change and I make mistakes
 
