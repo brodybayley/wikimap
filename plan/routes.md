@@ -6,29 +6,23 @@
 * Update
 * Delete
 
-
-## BREAD
-
-PUT: used to replace an existing resource
-
-PATCH: update part of an exisiting resource
-
 ### Users
-* Create  => GET    =>  '/register' 
+* Read    => GET    =>  '/register' 
+* Create  => POST   =>  '/register'
 * Read    => GET    =>  '/login' 
-* Add     => POST   =>  '/register'
+* Create  => POST   =>  '/login' 
 
 ### Maps
 * Browse  => GET    =>  '/maps'
 * Read    => GET    =>  '/maps/:map_id'
-* Edit    => PATCH  =>  '/maps/:map_id'
+* Edit    => POST   =>  '/maps/:map_id'
 * Add     => POST   =>  '/maps'
 * Delete  => DELETE =>  '/maps/:map_id'
 
 ### Points
 * Browse  => GET    =>  '/maps/:map_id/points'
 * Read    => GET    =>  '/maps/:map_id/points/:point_id'
-* Edit    => PATCH  =>  '/maps/:map_id/points/:point_id'
+* Edit    => POST   =>  '/maps/:map_id/points/:point_id'
 * Add     => POST   =>  '/maps/:map_id/points'
 * Delete  => DELETE =>  '/maps/:map_id/points/:point_id'
 
