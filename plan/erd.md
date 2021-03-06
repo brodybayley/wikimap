@@ -15,8 +15,8 @@
   * id
   * map_id
   * user_id
-  * point_title
-  * point_description
+  * title
+  * description
   * image
   * longitude
   * latitude
