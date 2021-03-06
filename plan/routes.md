@@ -21,14 +21,14 @@ PATCH: update part of an exisiting resource
 ### Maps
 * Browse  => GET    =>  '/maps'
 * Read    => GET    =>  '/maps/:map_id'
-* Edit    => Patch  =>  '/maps/:map_id'
+* Edit    => PATCH  =>  '/maps/:map_id'
 * Add     => POST   =>  '/maps'
 * Delete  => DELETE =>  '/maps/:map_id'
 
 ### Points
 * Browse  => GET    =>  '/maps/:map_id/points'
 * Read    => GET    =>  '/maps/:map_id/points/:point_id'
-* Edit    => Patch  =>  '/maps/:map_id/points/:point_id'
+* Edit    => PATCH  =>  '/maps/:map_id/points/:point_id'
 * Add     => POST   =>  '/maps/:map_id/points'
 * Delete  => DELETE =>  '/maps/:map_id/points/:point_id'
 
@@ -46,10 +46,10 @@ PATCH: update part of an exisiting resource
         SELECT name count(*)
         FROM favourites
         JOIN users ON users_id = users.id
-        ````
+        ```
         * Map 
-      * Created Maps
-        * Map
+    * Created Maps
+      * Map
 
 * Guest link => Map
   * If want to favourite, then log in
