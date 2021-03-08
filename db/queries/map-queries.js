@@ -23,7 +23,7 @@ const getMapsById = id => {
     .then(res => res.rows[0]);
 };
 
-const getFavouriteMaps = (user_id) => {
+const getFavouriteMaps = userId => {
   const queryStr = `
     SELECT maps.*
     FROM favourites
@@ -33,11 +33,11 @@ const getFavouriteMaps = (user_id) => {
   `;
 
   return db
-    .query(queryStr, [user_id])
+    .query(queryStr, [userId])
     .then(res => res.rows);
 };
 
-const getMyMaps = user_id => {
+const getMyMaps = userId => {
   const queryStr = `
     SELECT maps.*
     FROM maps
@@ -46,7 +46,7 @@ const getMyMaps = user_id => {
   `;
 
   return db
-    .query(queryStr, [user_id])
+    .query(queryStr, [userId])
     .then(res => res.rows);
 };
 
