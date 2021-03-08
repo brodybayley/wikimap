@@ -23,36 +23,8 @@ const getMapsById = id => {
     .then(res => res.rows[0]);
 };
 
-const getFavouriteMaps = userId => {
-  const queryStr = `
-    SELECT maps.*
-    FROM favourites
-    JOIN maps ON map_id = maps.id
-    JOIN users ON user_id = users.id
-    WHERE favourites.user_id = $1
-  `;
-
-  return db
-    .query(queryStr, [userId])
-    .then(res => res.rows);
-};
-
-const getMyMaps = userId => {
-  const queryStr = `
-    SELECT maps.*
-    FROM maps
-    JOIN users ON user_id = users.id
-    WHERE user_id = $1
-  `;
-
-  return db
-    .query(queryStr, [userId])
-    .then(res => res.rows);
-};
 
 module.exports = {
   getMaps,
   getMapsById,
-  getFavouriteMaps,
-  getMyMaps
 };
