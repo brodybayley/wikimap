@@ -1,9 +1,9 @@
 const express = require('express');
 const router  = express.Router();
-const { getMaps, getMapsById } = require('../db/queries/map-queries');
+const { getMaps, getMapsById, addMap, deleteMap } = require('../db/queries/map-queries');
 
 // GET /maps/
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   getMaps()
     .then(maps => res.json(maps))
     .catch(err => {
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 // GET /maps/:id
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   getMapsById(req.params.id)
     .then(map => res.json(map))
     .catch(err => {
@@ -24,5 +24,26 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// POST /maps
+router.post('/', (req, res) => {
+  addMap()
+    .then(maps => res.json(maps))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// DELETE /maps/:map_id
+router.delete('/:id', (req, res) => {
+  deleteMap()
+    .then(maps => res.json(maps))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 module.exports = router;
