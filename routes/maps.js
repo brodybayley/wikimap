@@ -26,7 +26,20 @@ router.get('/:id', (req, res) => {
 
 // POST /maps
 router.post('/', (req, res) => {
-  addMap()
+  const userId = req.session.userId;
+  addMap({...req.body, user_id: userId})
+    .then(maps => res.json(maps))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// POST /maps/:id
+router.post('/:id', (req, res) => {
+  const mapId = req.params.Id;
+  editMap({...req.body, id: mapId})
     .then(maps => res.json(maps))
     .catch(err => {
       res
