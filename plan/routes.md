@@ -11,6 +11,10 @@
 * Create  => POST   =>  '/register'
 * Read    => GET    =>  '/login' 
 * Create  => POST   =>  '/login' 
+* Read    => GET    =>  '/users/:user_id'
+* Create  => POST   =>  '/users/:user_id'
+* Read    => GET    =>  '/users/:user_id/favourites'
+* Create  => POST   =>  '/users/:user_id/favourites'
 
 ### Maps
 * Browse  => GET    =>  '/maps'
