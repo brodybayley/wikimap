@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getMaps, getMapsById, addMap, deleteMap } = require('../db/queries/map-queries');
+const { getMaps, getMapsById, addMap, deleteMap, editMap } = require('../db/queries/map-queries');
 
 // GET /maps/
 router.get('/', (req, res) => {
@@ -35,9 +35,9 @@ router.post('/', (req, res) => {
     });
 });
 
-// DELETE /maps/:map_id
+// DELETE /maps/:id
 router.delete('/:id', (req, res) => {
-  deleteMap()
+  deleteMap(req.params.id)
     .then(maps => res.json(maps))
     .catch(err => {
       res
