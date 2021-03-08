@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getMapPoints, getPoint } = require('../db/product-queries');
+const { getMapPoints, getPoint, addPoint, deletePoint, editPoint } = require('../db/product-queries');
 
 
 //Get all points on a map /maps/:map_id/points
@@ -29,6 +29,7 @@ const getMapPoints = mapID => {
     .then(res => res.rows);
 };
 
+exports.getMapPoints = getMapPoints;
 
 //Get a specific point /maps/:map_id/points/:point_id
 router.get("/points/:point_id", (req, res) => {
@@ -55,6 +56,7 @@ const getPoint = pointID => {
     .then(res => res.rows[0]);
 };
 
+exports.getPoint = getPoint;
 
 // //Edit a point /maps/:map_id/points/:point_id
 // router.post("/points/:point_id", (req, res) => {
@@ -109,6 +111,29 @@ const addPoint = (point) => {
 
 exports.addPoint = addPoint;
 
-// ### Points
 
-// * Delete  => DELETE =>  '/maps/:map_id/points/:point_id'
+// Delete a point on a map /maps/:map_id/points/:point_id
+router.post("/points/:point_id", (req, res) => {
+  deletePoint(pointID)
+    .then((point) => {
+      res.json(point);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+const deletePoint = (point) => {
+  const queryStr = `
+  DELETE FROM points
+  WHERE id = $1
+  `;
+
+  return db
+    .query(queryStr, [point])
+    .then(res => res.rows[0]);
+};
+
+exports.deletePoint = deletePoint;
