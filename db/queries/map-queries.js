@@ -34,7 +34,7 @@ const addMap = map => {
 
   return db
     .query(queryStr, values)
-    .then(res => res.rows[0]);
+    .then(res => res.rows);
 };
 
 const deleteMap = mapId => {
@@ -49,9 +49,26 @@ const deleteMap = mapId => {
     .then(res => res.rows);
 };
 
+const editMap = map => {
+  const queryStr = `
+    UPDATE maps
+    SET title = $1
+    SET description = $2
+    WHERE id = $3
+    RETURNING *
+  `;
+
+  const values = [map.title, map.description, map.id];
+
+  return db
+    .query(queryStr, values)
+    .then(res => res.rows);
+};
+
 module.exports = {
   getMaps,
   getMapsById,
   addMap,
-  deleteMap
+  deleteMap,
+  editMap
 };
