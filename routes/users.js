@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/users-queries.js');
+const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
 
 // TO DO: ejs files
 router.get('/register', (req, res) => {
