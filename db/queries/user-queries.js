@@ -1,6 +1,6 @@
 const db = require('../../lib/db');
 
-const registerUsers = (users) => {
+const registerUser = users => {
   const queryStr = `
     INSERT into users (name, email, password)
     VALUES ($1, $2, $3)
@@ -9,7 +9,7 @@ const registerUsers = (users) => {
 
   return db
     .query(queryStr, [users.name, users.email, users.password])
-    .then(res => res.rows);
+    .then(res => res.rows[0]);
 };
 
 const getUsers = (name, password) => {
@@ -70,7 +70,7 @@ const getMyMaps = userId => {
 
 // export all functions
 module.exports = {
-  registerUsers,
+  registerUser,
   getFavouriteMaps,
   getMyMaps,
   getUsers,

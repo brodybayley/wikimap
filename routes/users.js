@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { registerUsers, getFavouriteMaps, getMyMaps, getUsers } = require('../db/user-queries.js');
+const { registerUser, getFavouriteMaps, getMyMaps, getUsers } = require('../db/user-queries.js');
 
 // TO DO: ejs files
 router.get('/register', (req, res) => {
@@ -34,7 +34,7 @@ router.post('/login', (req, res) => {
 
 // POST /register
 router.post("/register", (req, res) => {
-  registerUsers(userId)
+  registerUser({...req.body})
     .then(user => {
       req.session.userId = user.id;
       res.redirect('/');
