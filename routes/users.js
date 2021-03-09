@@ -7,19 +7,19 @@
 
 const express = require('express');
 const router = express.Router();
-const { registerUsers, getFavouriteMaps, getMyMaps, getUsers } = require('../db/user-queries.js')
+const { registerUsers, getFavouriteMaps, getMyMaps, getUsers } = require('../db/user-queries.js');
 
 // TO DO: ejs files
 router.get('/register', (req, res) => {
   const templateVars = {};
   res.render('register', templateVars);
-})
+});
 
 //Same as above, requires ejs
 router.get('/login', (req, res) => {
   const templateVars = {};
-  res.render('url_login', templateVars)
-})
+  res.render('url_login', templateVars);
+});
 
 router.post('/login', (req, res) => {
   const username = req.body.name;
@@ -28,43 +28,40 @@ router.post('/login', (req, res) => {
   console.log(userInfo);
   if (userInfo) { //conditional to check goes here
     req.session.userId = user.id;
-    res.redirect('/')
+    res.redirect('/');
   }
-})
+});
 
 // POST /register
 router.post("/register", (req, res) => {
   registerUsers(userId)
     .then(user => {
       req.session.userId = user.id;
-      res.redirect('/')
+      res.redirect('/');
     })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
-    })
-})
+    });
+});
 
 //GET to /:id
 router.get("/:id", (req, res) => {
-  const userId = req.session.userId;
+  const userId = req.params.id;
   getMyMaps(userId)
     .then(maps => res.json(maps))
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
-    })
-})
+    });
+});
 
-
-
-// queries function file
 
 // GET /users/:user_id/favourites
-router.get("/favourites", (req, res) => {
-  const userId = req.session.userId;
+router.get("/:id/favourites", (req, res) => {
+  const userId = req.params.id;
   getFavouriteMaps(userId)
     .then(maps => res.json(maps))
     .catch(err => {
@@ -73,20 +70,5 @@ router.get("/favourites", (req, res) => {
         .json({ error: err.message });
     });
 });
-
-// OLD EXAMPLE ROUTE
-router.get("/", (req, res) => {
-  db.query(`SELECT * FROM users;`)
-    .then(data => {
-      const users = data.rows;
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-return router;
 
 module.exports = router;
