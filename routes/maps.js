@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 
 // POST /maps/:id
 router.post('/:id', (req, res) => {
-  const mapId = req.params.Id;
+  const mapId = req.params.id;
   editMap({...req.body, id: mapId})
     .then(maps => res.json(maps))
     .catch(err => {
