@@ -27,7 +27,7 @@ const getPoint = pointID => {
 };
 
 
-const editPoint = pointID => {
+const editPoint = point => {
   const queryStr = `
   UPDATE points
   SET title = $1,
@@ -44,7 +44,7 @@ const editPoint = pointID => {
     .then(res => res.rows[0]);
 };
 
-const addPoint = (point) => {
+const addPoint = point => {
   const queryStr = `
   INSERT INTO points (map_id, user_id, title, description, longitude, latitude, image_url)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -57,7 +57,7 @@ const addPoint = (point) => {
 };
 
 
-const deletePoint = (point) => {
+const deletePoint = point => {
   const queryStr = `
   DELETE FROM points
   WHERE id = $1
