@@ -18,7 +18,7 @@ router.get('/register', (req, res) => {
 //Same as above, requires ejs
 router.get('/login', (req, res) => {
   const templateVars = {};
-  res.render('login', templateVars);
+  res.render('/login', templateVars);
 });
 
 const login = (email, password) => {
@@ -33,11 +33,11 @@ const login = (email, password) => {
 exports.login = login;
 
 router.post('/login', (req, res) => {
-  const {email, password} = req.body;
+  const { email, password } = req.body;
   login(email, password)
     .then(user => {
       if (!user) {
-        res.send({error: 'error'});
+        res.send({ error: 'error' });
       }
       req.session.userId = user.id;
       res.redirect('/');
@@ -51,7 +51,7 @@ router.post('/login', (req, res) => {
 
 // POST /register
 router.post("/register", (req, res) => {
-  registerUser({...req.body})
+  registerUser({ ...req.body })
     .then(user => {
       req.session.userId = user.id;
       res.redirect('/');
