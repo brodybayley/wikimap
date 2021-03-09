@@ -78,14 +78,14 @@ const addPoint = point => {
 };
 
 
-const deletePoint = point => {
+const deletePoint = (mapID, pointID) => {
   const queryStr = `
   DELETE FROM points
-  WHERE id = $1
+  WHERE map_id = $1 AND id = $2
   `;
 
   return db
-    .query(queryStr, [point])
+    .query(queryStr, [mapID, pointID])
     .then(res => res.rows[0]);
 };
 

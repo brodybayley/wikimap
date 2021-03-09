@@ -59,9 +59,10 @@ router.post("/:map_id/points", (req, res) => {
 
 
 // Delete a point on a map /maps/:map_id/points/:point_id
-router.delete("/:id", (req, res) => {
+router.delete("/:map_id/points/:point_id", (req, res) => {
   const mapID = req.params.map_id;
-  deletePoint(req.params.id)
+  const pointID = req.params.point_id;
+  deletePoint(mapID, pointID)
     .then(point => res.json(point))
     .catch(err => {
       res
