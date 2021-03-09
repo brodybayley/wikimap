@@ -31,18 +31,29 @@ const editPoint = point => {
   const queryStr = `
   UPDATE points
   SET title = $1,
-  description = $2,
-  longitude = $3,
-  latitude = $4,
-  image_url = $5
-  WHERE id = $6
+      description = $2,
+      longitude = $3,
+      latitude = $4,
+      image_url = $5
+  WHERE map_id = $6 AND id = $7
   RETURNING *
   `;
 
+  const values = [
+    point.title,
+    point.description,
+    point.longitude,
+    point.latitude,
+    point.image_url,
+    point.map_id,
+    point.id
+  ];
+
   return db
-    .query(queryStr, [point.title, point.description, point.longitude, point.latitude, point.image_url])
+    .query(queryStr, values)
     .then(res => res.rows[0]);
 };
+
 
 const addPoint = point => {
   const queryStr = `

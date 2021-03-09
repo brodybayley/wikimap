@@ -31,10 +31,11 @@ router.get("/:map_id/points/:point_id", (req, res) => {
 
 
 //Edit a point /maps/:map_id/points/:point_id
-router.post("/:point_id", (req, res) => {
-  const userID = req.session.userID;
+router.post("/:map_id/points/:point_id", (req, res) => {
+  // const userID = req.session.userID;
   const mapID = req.params.map_id;
-  editPoint({ ...req.body, user_id: userID, map_id: mapID })
+  const pointID = req.params.point_id;
+  editPoint({ ...req.body, map_id: mapID, id: pointID })
     .then(point => res.json(point))
     .catch(err => {
       res
