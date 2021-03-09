@@ -12,13 +12,10 @@ const registerUser = users => {
     .then(res => res.rows[0]);
 };
 
-const getUsers = (name, password) => {
+const getUserByEmail = email => {
   return db
-    .query(`SELECT * FROM users WHERE name = $1 AND password = $2;`, [name], [password])
-    .then((response) => {
-      console.log(response.rows);
-      return response.rows;
-    });
+    .query(`SELECT * FROM users WHERE email = $1`, [email])
+    .then(res => res.rows[0]);
 };
 
 const addFavouriteMap = (userId, mapId) => {
@@ -73,7 +70,7 @@ module.exports = {
   registerUser,
   getFavouriteMaps,
   getMyMaps,
-  getUsers,
+  getUserByEmail,
   addFavouriteMap,
   addUserMap
 };

@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { registerUser, getFavouriteMaps, getMyMaps, getUsers } = require('../db/user-queries.js');
+const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/user-queries.js');
 
 // TO DO: ejs files
 router.get('/register', (req, res) => {
@@ -18,18 +18,35 @@ router.get('/register', (req, res) => {
 //Same as above, requires ejs
 router.get('/login', (req, res) => {
   const templateVars = {};
-  res.render('url_login', templateVars);
+  res.render('login', templateVars);
 });
 
+const login = (email, password) => {
+  getUserByEmail(email)
+    .then(user => {
+      if (user.password === password) {
+        return user;
+      }
+      return null;
+    });
+};
+exports.login = login;
+
 router.post('/login', (req, res) => {
-  const username = req.body.name;
-  const password = req.body.password;
-  const userInfo = getUsers(username, password)
-  console.log(userInfo);
-  if (userInfo) { //conditional to check goes here
-    req.session.userId = user.id;
-    res.redirect('/');
-  }
+  const {email, password} = req.body;
+  login(email, password)
+    .then(user => {
+      if (!user) {
+        res.send({error: 'error'});
+      }
+      req.session.userId = user.id;
+      res.redirect('/');
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 // POST /register
