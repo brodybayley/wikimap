@@ -14,15 +14,15 @@ const getMapPoints = mapID => {
 };
 
 
-const getPoint = pointID => {
+const getPoint = (mapID, pointID) => {
   const queryStr = `
   SELECT *
   FROM points
-  WHERE id = $1
+  WHERE map_id = $1 AND id = $2
   `;
 
   return db
-    .query(queryStr, [pointID])
+    .query(queryStr, [mapID, pointID])
     .then(res => res.rows[0]);
 };
 

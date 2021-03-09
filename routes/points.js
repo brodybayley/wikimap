@@ -4,8 +4,8 @@ const { getMapPoints, getPoint, addPoint, deletePoint, editPoint } = require('..
 
 
 //Get all points on a map /maps/:map_id/points
-router.get("/", (req, res) => {
-  const mapID = req.params.mapID;
+router.get("/:map_id/points", (req, res) => {
+  const mapID = req.params.map_id;
   getMapPoints(mapID)
     .then(points => res.json(points))
     .catch(err => {
@@ -17,9 +17,10 @@ router.get("/", (req, res) => {
 
 
 //Get a specific point /maps/:map_id/points/:point_id
-router.get("/:point_id", (req, res) => {
-  const pointID = req.params.mapID;
-  getPoint(pointID)
+router.get("/:map_id/points/:point_id", (req, res) => {
+  const mapID = req.params.map_id;
+  const pointID = req.params.point_id;
+  getPoint(mapID, pointID)
     .then(point => res.json(point))
     .catch(err => {
       res
@@ -32,7 +33,7 @@ router.get("/:point_id", (req, res) => {
 //Edit a point /maps/:map_id/points/:point_id
 router.post("/:point_id", (req, res) => {
   const userID = req.session.userID;
-  const mapID = req.params.mapID;
+  const mapID = req.params.map_id;
   editPoint({ ...req.body, user_id: userID, map_id: mapID })
     .then(point => res.json(point))
     .catch(err => {
@@ -59,6 +60,7 @@ router.post("/", (req, res) => {
 
 // Delete a point on a map /maps/:map_id/points/:point_id
 router.delete("/:id", (req, res) => {
+  const mapID = req.params.map_id;
   deletePoint(req.params.id)
     .then(point => res.json(point))
     .catch(err => {
