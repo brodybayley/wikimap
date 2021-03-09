@@ -75,7 +75,7 @@ module.exports = router;
 
 const getMapPoints = mapID => {
   const queryStr = `
-  SELECT *
+  SELECT points.*
   FROM points
   JOIN maps ON map_id = maps.id
   WHERE map_id = $1
@@ -103,11 +103,11 @@ const getPoint = pointID => {
 const editPoint = pointID => {
   const queryStr = `
   UPDATE points
-  SET title = $1
-  SET description = $2
-  SET longitude = $3
-  SET latitude = $4
-  SET image = $5
+  SET title = $1,
+  description = $2,
+  longitude = $3,
+  latitude = $4,
+  image_url = $5
   WHERE id = $6
   RETURNING *
   `;
@@ -148,3 +148,5 @@ module.exports = {
   addPoint,
   deletePoint
 };
+
+
