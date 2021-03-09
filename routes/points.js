@@ -32,7 +32,6 @@ router.get("/:map_id/points/:point_id", (req, res) => {
 
 //Edit a point /maps/:map_id/points/:point_id
 router.post("/:map_id/points/:point_id", (req, res) => {
-  // const userID = req.session.userID;
   const mapID = req.params.map_id;
   const pointID = req.params.point_id;
   editPoint({ ...req.body, map_id: mapID, id: pointID })
@@ -46,9 +45,9 @@ router.post("/:map_id/points/:point_id", (req, res) => {
 
 
 // Add a point to a map /maps/:map_id/points
-router.post("/", (req, res) => {
+router.post("/:map_id/points", (req, res) => {
   const userID = req.session.userID;
-  const mapID = req.session.mapID;
+  const mapID = req.params.map_id;
   addPoint({ ...req.body, user_id: userID, map_id: mapID })
     .then(point => res.json(point))
     .catch(err => {

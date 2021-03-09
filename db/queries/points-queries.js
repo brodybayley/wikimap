@@ -62,8 +62,18 @@ const addPoint = point => {
   RETURNING *
   `;
 
+  const values = [
+    point.map_id,
+    point.user_id,
+    point.title,
+    point.description,
+    point.longitude,
+    point.latitude,
+    point.image_url
+  ];
+
   return db
-    .query(queryStr, [point.map_id, point.user_id, point.title, point.description, point.longitude, point.latitude, point.image_url])
+    .query(queryStr, values)
     .then(res => res.rows[0]);
 };
 
