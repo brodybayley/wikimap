@@ -4,11 +4,9 @@ const { getMapPoints, getPoint, addPoint, deletePoint, editPoint } = require('..
 
 
 //Get all points on a map /maps/:map_id/points
-router.get("/points", (req, res) => {
+router.get("/", (req, res) => {
   getMapPoints(mapID)
-    .then((points) => {
-      res.json(points);
-    })
+    .then(points => res.json(points))
     .catch(err => {
       res
         .status(500)
@@ -29,14 +27,11 @@ const getMapPoints = mapID => {
     .then(res => res.rows);
 };
 
-exports.getMapPoints = getMapPoints;
 
 //Get a specific point /maps/:map_id/points/:point_id
-router.get("/points/:point_id", (req, res) => {
+router.get("/:point_id", (req, res) => {
   getPoint(pointID)
-    .then((point) => {
-      res.json(point);
-    })
+    .then(point => res.json(point))
     .catch(err => {
       res
         .status(500)
@@ -56,40 +51,44 @@ const getPoint = pointID => {
     .then(res => res.rows[0]);
 };
 
-exports.getPoint = getPoint;
 
-// //Edit a point /maps/:map_id/points/:point_id
-// router.post("/points/:point_id", (req, res) => {
-//   getPoint(pointID)
-//     .then((point) => {
-//       res.json(point);
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
+//Edit a point /maps/:map_id/points/:point_id
+router.post("/:point_id", (req, res) => {
+  const userID = req.session.userID;
+  const mapID = req.session.mapID;
+  editPoint({ ...req.body, user_id: userID, map_id: mapID })
+    .then(point => res.json(point))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
-// const editPoint = pointID => {
-//   const queryStr = `
-//   UPDATE points
-//   SET
-//   WHERE id = $2
-//   `;
+const editPoint = pointID => {
+  const queryStr = `
+  UPDATE points
+  SET title = $1
+  SET description = $2
+  SET longitude = $3
+  SET latitude = $4
+  SET image = $5
+  WHERE id = $6
+  RETURNING *
+  `;
 
-//   return db
-//     .query(queryStr, [pointID])
-//     .then(res => res.rows[0]);
-// };
+  return db
+    .query(queryStr, [point.title, point.description, point.longitude, point.latitude, point.image_url])
+    .then(res => res.rows[0]);
+};
 
 
 // Add a point to a map /maps/:map_id/points
-router.post("/points", (req, res) => {
-  addPoint(pointID)
-    .then((point) => {
-      res.json(point);
-    })
+router.post("/", (req, res) => {
+  const userID = req.session.userID;
+  const mapID = req.session.mapID;
+  addPoint({ ...req.body, user_id: userID, map_id: mapID })
+    .then(point => res.json(point))
     .catch(err => {
       res
         .status(500)
@@ -109,15 +108,11 @@ const addPoint = (point) => {
     .then(res => res.rows[0]);
 };
 
-exports.addPoint = addPoint;
-
 
 // Delete a point on a map /maps/:map_id/points/:point_id
-router.post("/points/:point_id", (req, res) => {
-  deletePoint(pointID)
-    .then((point) => {
-      res.json(point);
-    })
+router.delete("/:id", (req, res) => {
+  deletePoint(req.params.id)
+    .then(point => res.json(point))
     .catch(err => {
       res
         .status(500)
@@ -136,4 +131,4 @@ const deletePoint = (point) => {
     .then(res => res.rows[0]);
 };
 
-exports.deletePoint = deletePoint;
+module.exports = router;
