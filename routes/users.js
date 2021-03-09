@@ -7,19 +7,8 @@
 
 const express = require('express');
 const router = express.Router();
-const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
+const { addFavouriteMap, registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
 
-// TO DO: ejs files
-router.get('/register', (req, res) => {
-  const templateVars = {};
-  res.render('register', templateVars);
-});
-
-//Same as above, requires ejs
-router.get('/login', (req, res) => {
-  const templateVars = {};
-  res.render('login', templateVars);
-});
 
 const login = (email, password) => {
   getUserByEmail(email)
@@ -32,36 +21,6 @@ const login = (email, password) => {
 };
 exports.login = login;
 
-router.post('/login', (req, res) => {
-  const {email, password} = req.body;
-  login(email, password)
-    .then(user => {
-      if (!user) {
-        res.send({error: 'error'});
-      }
-      req.session.userId = user.id;
-      res.redirect('/');
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
-// POST /register
-router.post("/register", (req, res) => {
-  registerUser({...req.body})
-    .then(user => {
-      req.session.userId = user.id;
-      res.redirect('/');
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 //GET to /:id
 router.get("/:id", (req, res) => {
@@ -84,6 +43,21 @@ router.get("/:id/favourites", (req, res) => {
     .catch(err => {
       res
         .status(500)
+        .json({ error: err.message });
+    });
+});
+
+router.post("/:id/favourites", (req, res) => {
+  console.log('req.body', req.body)
+  const userId = req.params.id;
+  const mapId = req.body.mapId;
+  addFavouriteMap(userId, mapId)
+    .then(() => {
+      return getFavouriteMaps(userId);
+    })
+    .then(result => res.json(result))
+    .catch(err => {
+      res.status(500)
         .json({ error: err.message });
     });
 });

@@ -2,14 +2,14 @@
 require('dotenv').config();
 
 // Web server config
-const PORT           = process.env.PORT || 8080;
-const ENV            = process.env.ENV || "development";
-const express        = require("express");
-const bodyParser     = require("body-parser");
-const sass           = require("node-sass-middleware");
-const app            = express();
-const morgan         = require('morgan');
-const cookieSession  = require('cookie-session');
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
+const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -18,7 +18,8 @@ const methodOverride = require('method-override');
 app.use(morgan('dev'));
 
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())  //encoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -33,12 +34,16 @@ app.use(cookieSession({
 app.use(methodOverride('_method'));
 
 // Separated Routes for each Resource
-const usersRoutes  = require("./routes/users");
-const mapsRoutes   = require("./routes/maps");
+const usersRoutes = require("./routes/users");
+const registerRoutes = require("./routes/register");
+const loginRoutes = require("./routes/login");
+const mapsRoutes = require("./routes/maps");
 const pointsRoutes = require("./routes/points");
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes);
+app.use("/register", registerRoutes);
+app.use("/login", loginRoutes);
 app.use("/api/maps", mapsRoutes);
 app.use("/api/points", pointsRoutes);
 

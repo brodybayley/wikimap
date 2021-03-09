@@ -22,8 +22,6 @@ const addFavouriteMap = (userId, mapId) => {
   return db
     .query(`
       INSERT into favourites (user_id, map_id) VALUES ($1, $2)
-      JOIN maps ON map_id = maps.id
-      JOIN users ON user_id = users.id
       RETURNING *;`, [userId, mapId])
     .then(res => res.rows);
 };
@@ -43,7 +41,7 @@ const getFavouriteMaps = userId => {
     SELECT maps.*
     FROM favourites
     JOIN maps ON map_id = maps.id
-    JOIN users ON user_id = users.id
+    JOIN users ON favourites.user_id = users.id
     WHERE favourites.user_id = $1
   `;
 
