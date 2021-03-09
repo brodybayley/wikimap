@@ -41,7 +41,6 @@ const deleteMap = mapId => {
   const queryStr = `
     DELETE FROM maps
     WHERE id = $1
-    RETURNING *
   `;
 
   return db
@@ -53,7 +52,7 @@ const editMap = map => {
   const queryStr = `
     UPDATE maps
     SET title = $1
-    SET description = $2
+      , description = $2
     WHERE id = $3
     RETURNING *
   `;
