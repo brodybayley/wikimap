@@ -45,7 +45,7 @@ app.use("/api/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/api/maps", mapsRoutes);
-app.use("/api/points", pointsRoutes);
+app.use("/api/maps", pointsRoutes);
 
 
 // Home page
