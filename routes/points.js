@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getMapPoints, getPoint, addPoint, deletePoint, editPoint } = require('../db/product-queries');
+const { getMapPoints, getPoint, addPoint, deletePoint, editPoint } = require('../db/queries/points-queries');
 
 
 //Get all points on a map /maps/:map_id/points
 router.get("/", (req, res) => {
+  const mapID = req.params.mapID
   getMapPoints(mapID)
     .then(points => res.json(points))
     .catch(err => {
@@ -13,6 +14,64 @@ router.get("/", (req, res) => {
         .json({ error: err.message });
     });
 });
+
+
+//Get a specific point /maps/:map_id/points/:point_id
+router.get("/:point_id", (req, res) => {
+  const pointID = req.params.mapID
+  getPoint(pointID)
+    .then(point => res.json(point))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
+//Edit a point /maps/:map_id/points/:point_id
+router.post("/:point_id", (req, res) => {
+  const userID = req.session.userID;
+  const mapID = req.params.mapID;
+  editPoint({ ...req.body, user_id: userID, map_id: mapID })
+    .then(point => res.json(point))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
+// Add a point to a map /maps/:map_id/points
+router.post("/", (req, res) => {
+  const userID = req.session.userID;
+  const mapID = req.session.mapID;
+  addPoint({ ...req.body, user_id: userID, map_id: mapID })
+    .then(point => res.json(point))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
+// Delete a point on a map /maps/:map_id/points/:point_id
+router.delete("/:id", (req, res) => {
+  deletePoint(req.params.id)
+    .then(point => res.json(point))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+
+module.exports = router;
+
+// For points-queries
 
 const getMapPoints = mapID => {
   const queryStr = `
@@ -28,17 +87,6 @@ const getMapPoints = mapID => {
 };
 
 
-//Get a specific point /maps/:map_id/points/:point_id
-router.get("/:point_id", (req, res) => {
-  getPoint(pointID)
-    .then(point => res.json(point))
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 const getPoint = pointID => {
   const queryStr = `
   SELECT *
@@ -51,19 +99,6 @@ const getPoint = pointID => {
     .then(res => res.rows[0]);
 };
 
-
-//Edit a point /maps/:map_id/points/:point_id
-router.post("/:point_id", (req, res) => {
-  const userID = req.session.userID;
-  const mapID = req.session.mapID;
-  editPoint({ ...req.body, user_id: userID, map_id: mapID })
-    .then(point => res.json(point))
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 const editPoint = pointID => {
   const queryStr = `
@@ -82,20 +117,6 @@ const editPoint = pointID => {
     .then(res => res.rows[0]);
 };
 
-
-// Add a point to a map /maps/:map_id/points
-router.post("/", (req, res) => {
-  const userID = req.session.userID;
-  const mapID = req.session.mapID;
-  addPoint({ ...req.body, user_id: userID, map_id: mapID })
-    .then(point => res.json(point))
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 const addPoint = (point) => {
   const queryStr = `
   INSERT INTO points (map_id, user_id, title, description, longitude, latitude, image_url)
@@ -109,17 +130,6 @@ const addPoint = (point) => {
 };
 
 
-// Delete a point on a map /maps/:map_id/points/:point_id
-router.delete("/:id", (req, res) => {
-  deletePoint(req.params.id)
-    .then(point => res.json(point))
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
 const deletePoint = (point) => {
   const queryStr = `
   DELETE FROM points
@@ -131,4 +141,10 @@ const deletePoint = (point) => {
     .then(res => res.rows[0]);
 };
 
-module.exports = router;
+module.exports = {
+  getMapPoints,
+  getPoint,
+  editPoint,
+  addPoint,
+  deletePoint
+};
