@@ -71,7 +71,7 @@ router.delete("/:id", (req, res) => {
 
 module.exports = router;
 
-// For points-queries
+// For points-queries!!!
 
 const getMapPoints = mapID => {
   const queryStr = `
