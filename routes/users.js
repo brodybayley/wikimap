@@ -18,7 +18,7 @@ router.get('/register', (req, res) => {
 //Same as above, requires ejs
 router.get('/login', (req, res) => {
   const templateVars = {};
-  res.render('/login', templateVars);
+  res.render('login', templateVars);
 });
 
 const login = (email, password) => {

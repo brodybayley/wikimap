@@ -2,14 +2,14 @@
 require('dotenv').config();
 
 // Web server config
-const PORT           = process.env.PORT || 8080;
-const ENV            = process.env.ENV || "development";
-const express        = require("express");
-const bodyParser     = require("body-parser");
-const sass           = require("node-sass-middleware");
-const app            = express();
-const morgan         = require('morgan');
-const cookieSession  = require('cookie-session');
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "development";
+const express = require("express");
+const bodyParser = require("body-parser");
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
+const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -33,8 +33,8 @@ app.use(cookieSession({
 app.use(methodOverride('_method'));
 
 // Separated Routes for each Resource
-const usersRoutes  = require("./routes/users");
-const mapsRoutes   = require("./routes/maps");
+const usersRoutes = require("./routes/users");
+const mapsRoutes = require("./routes/maps");
 const pointsRoutes = require("./routes/points");
 
 // Mount all resource routes
