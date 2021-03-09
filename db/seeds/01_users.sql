@@ -5,4 +5,3 @@ INSERT INTO users (name, email, password)
           , ('Michael', 'michael@dundermifflin.com', 'password')
           , ('Tomato', 'toma@to.com', 'password')
           ;
-
