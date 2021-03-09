@@ -40,7 +40,7 @@ const pointsRoutes = require("./routes/points");
 // Mount all resource routes
 app.use("/api/users", usersRoutes);
 app.use("/api/maps", mapsRoutes);
-app.use("/api/points", pointsRoutes);
+app.use("/api/maps", pointsRoutes);
 
 
 // Home page
