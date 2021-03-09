@@ -63,7 +63,8 @@ router.delete("/:map_id/points/:point_id", (req, res) => {
   const mapID = req.params.map_id;
   const pointID = req.params.point_id;
   deletePoint(mapID, pointID)
-    .then(point => res.json(point))
+    // .then(() => res.redirect('..'))
+    .then(() => res.send('Deleted from points db'))
     .catch(err => {
       res
         .status(500)

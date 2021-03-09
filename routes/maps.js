@@ -51,7 +51,8 @@ router.post('/:id', (req, res) => {
 // DELETE /maps/:id
 router.delete('/:id', (req, res) => {
   deleteMap(req.params.id)
-    .then(() => res.redirect('back'))
+    // .then(() => res.redirect('back'))
+    .then(() => res.send('Deleted from map db'))
     .catch(err => {
       res
         .status(500)
