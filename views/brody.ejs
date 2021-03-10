@@ -1,0 +1,59 @@
+<%- include('partials/_header') %>
+
+<body>
+  <div class="map-wrapper">
+    <div class="map-nav">
+      <ul class="tabs">
+        <li data-tab-target="#my-maps" class="active tab">My Maps</li>
+        <li data-tab-target="#my-favourites" class="tab">My Favourites</li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="my-maps" data-tab-content class="active">
+          <p>Testing data</p>
+          <p>More test data</p>
+          <p>more test data</p>
+        </div>
+        <div id="my-favourites" data-tab-content>
+          <p>Testing data favourites</p>
+          <p>Helllllo</p>
+          <p>Holaaaa</p>
+        </div>
+        <span class="create-map">
+          <a class="nav-link" href="/maps">Create New Maps</a>
+        </span>
+      </div>
+    </div>
+    <div class="map">
+      <img src="https://i.stack.imgur.com/1XPRz.png">
+    </div>
+  </div>
+
+  <div class="map-wrapper">
+    <div class="map-nav">
+      <h3 class="map-title">Best Eats in Vancouver</h3>
+      <span>
+        <a class="add-to-favourites" href="/maps">Add to Favourites</a>
+      </span>
+
+      <div class="tab-content">
+        <div>
+          <p>Forage</p>
+          <p>Phnom Penh Restaurant</p>
+          <p>Cafe Medina</p>
+          <p>Black + Blue</p>
+          <p>Sal y limon</p>
+          <p>Miku Vancouver</p>
+        </div>
+        <span class="add-new-pin">
+          <a class="nav-link" href="/maps">Add New Pins</a>
+        </span>
+      </div>
+    </div>
+    <div class="map">
+      <img src="https://i.stack.imgur.com/1XPRz.png">
+    </div>
+  </div>
+</body>
+
+</html>
