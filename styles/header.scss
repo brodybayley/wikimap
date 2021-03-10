@@ -1,0 +1,33 @@
+header {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120px;
+  background-color: beige;
+
+  nav.navbar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    border: solid purple;
+  }
+
+  .navbar-right {
+    display:flex;
+    flex-direction: row;
+  }
+
+  .nav-item {
+    display:flex;
+    flex-direction:row;
+    margin-left: 1.5rem;
+  }
+
+  .icon {
+    margin-left: 0.25rem;
+  }
+}
