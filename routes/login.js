@@ -14,7 +14,7 @@ const login = (email, password) => {
 exports.login = login;
 
 router.get('/', (req, res) => {
-  const templateVars = {};
+  const templateVars = { user: null };
   res.render('login', templateVars);
 });
 
@@ -35,6 +35,5 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 });
-
 
 module.exports = router;

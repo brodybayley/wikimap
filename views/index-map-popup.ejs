@@ -2,19 +2,21 @@
 <html lang="en">
 
 <head>
-  <title>WikiMaps</title>
+  <title>WikiMaps - Test Form Index</title>
   <%- include('partials/_head') %>
 </head>
 
 <%- include('partials/_header') %>
 
 <body>
+
+
   <main>
     <div class="hero-container">
       <div class="hero-description">
         <h4>Newest Map</h4>
-        <h1>Where to Avoid Other Humans</h1>
-        <p class="description-text">Don't like people? Want to be a loner? I got you fam.</p>
+        <h1>Best Food Around Town</h1>
+        <p class="description-text">I'm hungry. You're hungry. Everyone is hungry, so let's go eat!</p>
         <div class="hero-cta">
           <button class="button-text">Check Out Map</button>
         </div>
@@ -22,6 +24,14 @@
       <div class="img-mask">
         <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg" alt="map" class="hero-map">
       </div>
+    </div>
+    <div class="form-popup" id="create-map-popup">
+      <form method="POST" action="#">
+        <label for="map-popup" class="side-panel-heading">Create a Map</label>
+        <input type="text" id="input-map-title" name="map-title" placeholder="Enter map title...">
+        <textarea type="text" id="input-map-description" name="map-description" placeholder="Enter map description..."></textarea>
+        <button type="submit" class="button-text">Create</button>
+      </form>
     </div>
     <div class="map-container">
         <div class="map-card">
