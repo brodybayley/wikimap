@@ -3,7 +3,7 @@ const router = express.Router();
 const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
 
 router.get('/', (req, res) => {
-  const templateVars = {};
+  const templateVars = {user: null};
   res.render('register', templateVars);
 });
 

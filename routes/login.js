@@ -14,7 +14,7 @@ const login = (email, password) => {
 exports.login = login;
 
 router.get('/', (req, res) => {
-  const templateVars = {};
+  const templateVars = {user: null};
   res.render('login', templateVars);
 });
 
