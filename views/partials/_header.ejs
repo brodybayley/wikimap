@@ -2,20 +2,22 @@
   <nav class="navbar">
     <a class="navbar-left logo" href="/">WikiMaps</a>
     <div class="navbar-right">
-
-      <span class="nav-item">
-        <a class="nav-item nav-link" href=#>Create a Map</a>
-      </span>
-      <span class="nav-item nav-user">
-        <div class="nav-greeting">Hello there!</div>
-        <i class="fas fa-caret-down icon"></i>
-      </span>
-      <!-- <span class="nav-item">
-        <a class="nav-item nav-link" href="/register">Register</a>
-      </span>
-      <span class="nav-item">
-        <a class="nav-item nav-link" href="/login">Login</a>
-      </span> -->
+      <% if (user) { %>
+        <span class="nav-item">
+          <a class="nav-item nav-link" href=#>Create a Map</a>
+        </span>
+        <span class="nav-item nav-user">
+          <div class="nav-greeting">Hello there!</div>
+          <i class="fas fa-caret-down icon"></i>
+        </span>
+      <% } else { %>
+          <span class="nav-item">
+            <a class="nav-item nav-link" href="/register">Register</a>
+          </span>
+          <span class="nav-item">
+            <a class="nav-item nav-link" href="/login">Login</a>
+          </span>
+        <% } %>
     </div>
   </nav>
 </header>
