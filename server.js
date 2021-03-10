@@ -55,6 +55,11 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// temporary map route
+app.get('/maps', (req, res) => {
+  res.render('maps');
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

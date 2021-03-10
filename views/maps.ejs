@@ -1,11 +1,58 @@
-<%- include('partials/_header') %>
+<!-- <d%- include('partials/_header') %> -->
 
-<body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Map Page</h1>
+    <div id="map"></div>
 
-  <main>
-    <h3>Maps page</h3>
-    <form class="form-inline" action="/maps" method="POST">
-    </form>
-  </main>
+    <script>
+      function addMarker(coords){
+        let marker = new google.maps.Marker({
+          position: coords,
+          map:map
+        });
+      }
 
-</body>
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
+        });
+        addMarker({ lat: -25.344, lng: 131.036 });
+        // addMarker({ lat: -35.344, lng: 101.036 });
+        // addMarker({ lat: -25.342, lng: 130.036 });
+        addMarker('401 W Georgia St #600, Vancouver, BC V6B 5A1');
+
+        // let marker = new google.maps.Marker({
+        // position: { lat: -25.344, lng: 131.036 },
+        // map: map
+        // });
+        let infoWindow = new google.maps.InfoWindow({
+          content:'<h1>Hello</h1>'
+        });
+        marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+        });
+      }
+
+      </script>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>
