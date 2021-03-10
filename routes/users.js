@@ -21,6 +21,36 @@ const login = (email, password) => {
 };
 exports.login = login;
 
+router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  login(email, password)
+    .then(user => {
+      if (!user) {
+        res.send({ error: 'error' });
+      }
+      req.session.userId = user.id;
+      res.redirect('/');
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
+
+// POST /register
+router.post("/register", (req, res) => {
+  registerUser({ ...req.body })
+    .then(user => {
+      req.session.userId = user.id;
+      res.redirect('/');
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
 //GET to /:id
 router.get("/:id", (req, res) => {
