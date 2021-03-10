@@ -1,10 +1,27 @@
 <%- include('partials/_header') %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
 <body>
-  <h1>Login</h1>
-  <form action="/login" method="POST">
-    <input type="email" name="email" placeholder="Type your email">
-    <input type="password" name="password" placeholder="Type your password">
-    <button class="btn btn-primary" type="submit">Log in!</button>
-  </form>
+  <ul>
+    <li>My Maps</li>
+    <li>My Favourites</li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="my-maps">
+      <h2>My Maps</h2>
+    </div>
+    <div id="my-favourites">
+      <h2>My Favourites</h2>
+    </div>
+  </div>
 </body>
+
+</html>
