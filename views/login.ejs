@@ -5,22 +5,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="script.js" defer></script>
+  <script src="../public/scripts/script.js" defer></script>
+  <link href="../styles/login.css" rel="stylesheet">
   <title>Maps</title>
 </head>
 
 <body>
-  <ul>
-    <li data-tab-target="#my-maps">My Maps</li>
-    <li data-tab-target="my-favourites">My Favourites</li>
+  <ul class="tabs">
+    <li data-tab-target="#my-maps" class="active tab">My Maps</li>
+    <li data-tab-target="my-favourites" class="tab">My Favourites</li>
   </ul>
 
   <div class="tab-content">
-    <div id="my-maps">
-      <h2>My Maps</h2>
+    <div id="my-maps" data-tab-content class="active">
+      <p>Testing data</p>
+      <p>More test data</p>
+      <p>more test data</p>
     </div>
-    <div id="my-favourites">
-      <h2>My Favourites</h2>
+    <div id="my-favourites" data-tab-content>
+      <p>Testing data</p>
+      <p>Helllllo</p>
+      <p>Holaaaa</p>
     </div>
   </div>
 </body>
