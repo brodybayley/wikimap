@@ -25,15 +25,25 @@ $(() => {
     }
   ];
 
+  const $map = $(`
+    <div class="map-card">
+      <div class="img-mask">
+        <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg" alt="map" class="map-thumbnail">
+      </div>
+      <div class="map-heading">Map Title</div>
+    </div>
+  `);
 
-  const loadMaps = () => {
-    $.ajax({
-      url: '/',
-      method: 'GET',
-      dataType: 'json'
-    })
-      .then(res => console.log(res));
-  };
+  console.log($map);
 
-  loadMaps();
+  // const loadMaps = () => {
+  //   $.ajax({
+  //     url: '/',
+  //     method: 'GET',
+  //     dataType: 'json'
+  //   })
+  //     .then(res => console.log(res));
+  // };
+
+  // loadMaps();
 });
