@@ -3,7 +3,7 @@
 header {
   display:flex;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
   height: 120px;
   background-color:$primary-color;
 
@@ -14,7 +14,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem;
+    padding: 0 5rem;
   }
 
   .navbar-right {
@@ -34,11 +34,11 @@ header {
 
   a {
     text-decoration: none;
-    color: $text-color;
+    color: $white-contrast-color;
   }
 
   .logo {
-    color: brown;
+    color: $white-contrast-color
   }
 
 }
