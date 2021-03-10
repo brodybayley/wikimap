@@ -12,12 +12,19 @@ body {
   align-items: center;
 }
 
-div.hero-container {
+main {
+  display: flex;
+  flex-direction: column;
   width: 85%;
+  border:solid blue;
+}
+
+div.hero-container {
+  width: 100%;
   display:flex;
   flex-direction: row;
   align-items: center;
-  margin: 4rem;
+  margin: 4rem 0;
 
   .hero-description {
     margin-right: 2rem;
@@ -41,9 +48,44 @@ div.hero-container {
   }
 
   .hero-map {
-    width: 830px;
+    width: 100%;
     height: auto;
   }
+}
+
+div.map-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 4rem 0;
+
+  .map-row {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .map {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-evenly;
+    // border: solid purple;
+
+    &.img-mask {
+      width: 400px;
+      height: 320px;
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
+    }
+
+    .map-thumbnail {
+      width: 100%;
+      height: auto;
+    }
+  }
+
 }
 
 button {
