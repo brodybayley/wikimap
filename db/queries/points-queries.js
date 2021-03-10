@@ -54,6 +54,17 @@ const editPoint = point => {
     .then(res => res.rows[0]);
 };
 
+// const addPoint = (result) => {
+//   const userId = req.params.userId;
+//   const mapId = req.params.map_id;
+//   const lat = results[0].geometry.location.latitude
+//   const long = results[0].geometry.location.longitude
+//   const title = results[0].address_components.formatted_address
+//   return db.query(`INSERT INTO POINTS (user_id, map_id, title, latitude, longitude)
+//    VALUES ($1, $2, $3, $4, $5)
+//    RETURNING *;`, [userId, mapId, title, latitude, longitude])
+// }
+
 
 const addPoint = point => {
   const queryStr = `
