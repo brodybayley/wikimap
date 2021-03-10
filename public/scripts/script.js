@@ -1,4 +1,5 @@
 const tabs = document.querySelectorAll('[data-tab-target]')
+console.log('tabs:', tabs)
 const tabContents = document.querySelectorAll('[data-tab-content]')
 
 tabs.forEach(tab => {
@@ -14,3 +15,4 @@ tabs.forEach(tab => {
     target.classList.add('active')
   })
 })
+
