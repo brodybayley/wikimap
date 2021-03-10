@@ -1,8 +1,9 @@
 // See: https://sass-lang.com/
-$primary-color: brown;
-$secondary-color: #c7c7c7;
+$primary-color: #CD4631;
+$secondary-color: #eeeeee;
 $white-contrast-color: white;
-$text-color: black;
+$text-color: #474747;
+$hover-primary-color: #832d20;
 
 body {
   background-color: $secondary-color;
@@ -16,7 +17,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 85%;
-  border:solid blue;
+  margin-top: 120px;
 }
 
 div.hero-container {
@@ -28,6 +29,7 @@ div.hero-container {
 
   .hero-description {
     margin-right: 2rem;
+    color: $text-color;
 
     h1 {
       font-size: 48px;
@@ -69,11 +71,9 @@ div.map-container {
   .map {
     display: flex;
     flex-direction: row;
-    // justify-content: space-evenly;
-    // border: solid purple;
 
     &.img-mask {
-      width: 400px;
+      width: 342px;
       height: 320px;
       overflow: hidden;
       border-radius: 3px;
@@ -99,6 +99,6 @@ button {
   transition: all 0.1s ease-out;
 
   &:hover {
-    background-color: red;
+    background-color: $hover-primary-color;
   }
 }

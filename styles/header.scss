@@ -5,7 +5,10 @@ header {
   flex-direction: row;
   width: 100vw;
   height: 120px;
-  background-color:$primary-color;
+  background-color: $white-contrast-color;
+  box-shadow: 8px 8px 24px 10px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  z-index: 9999;
 
   nav.navbar {
     width: 100%;
@@ -34,11 +37,21 @@ header {
 
   a {
     text-decoration: none;
-    color: $white-contrast-color;
+    color: $primary-color;
+
+    &:hover {
+      color: $hover-primary-color;
+      text-decoration: underline;
+    }
   }
 
   .logo {
-    color: $white-contrast-color
+    color: $primary-color;
+
+    &:hover {
+      color: $hover-primary-color;
+      text-decoration: none;
+    }
   }
 
 }
