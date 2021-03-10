@@ -54,7 +54,7 @@ app.use("/api/maps", pointsRoutes);
 app.get("/", (req, res) => {
   const userId = req.session.userId;
   const templateVars = {user: userId};
-  res.render("index", templateVars);
+  res.render("index-map-popup", templateVars);
 });
 
 app.listen(PORT, () => {
