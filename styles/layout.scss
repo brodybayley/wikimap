@@ -18,6 +18,7 @@ main {
   flex-direction: column;
   width: 85%;
   margin-top: 120px;
+  align-items: center;
 }
 
 div.hero-container {
@@ -115,5 +116,36 @@ button {
 form {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 587px;
+  padding: 2rem;
+  background-color: $white-contrast-color;
+
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  #close-button {
+    font-size: 24px;
+  }
+
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+  }
+
+  input {
+    height: 3rem;
+    outline: none;
+  }
+
+  textarea {
+    margin: 24px 0;
+    min-height: 6rem;
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
