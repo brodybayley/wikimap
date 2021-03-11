@@ -8,7 +8,7 @@ header {
   background-color: $white-contrast-color;
   box-shadow: 8px 8px 24px 10px rgba(0, 0, 0, 0.08);
   position: fixed;
-  z-index: 9999;
+  z-index: 9998;
 
   nav.navbar {
     width: 100%;
@@ -23,6 +23,10 @@ header {
   .navbar-right {
     display:flex;
     flex-direction: row;
+
+    .nav-user:hover .icon {
+        color: $primary-color
+    }
   }
 
   .nav-item {
@@ -55,3 +59,35 @@ header {
   }
 
 }
+
+// div.nav-dropdown{
+//   display:none;
+// }
+
+.nav-dropdown {
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 160px;
+  height: 160px;
+  border: solid 1px $secondary-color;
+  border-radius: 5px;
+  align-self: flex-end;
+  margin-right: 5rem;
+  margin-top: 5rem;
+  position: fixed;
+  background-color: $white-contrast-color;
+
+  span {
+    width: 100%;
+    padding: 12px 16px;
+
+    &:hover {
+      color: $primary-color
+    }
+  }
+
+}
+
