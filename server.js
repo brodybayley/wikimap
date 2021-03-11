@@ -75,6 +75,11 @@ app.get('/maps', (req, res) => {
   res.render('maps', templateVars);
 });
 
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.send('Sign out successful: redirecting back to home page.');
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
