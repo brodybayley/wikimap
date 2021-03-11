@@ -53,12 +53,12 @@ app.use("/api/points", pointsRoutes);
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
 
-  const userId = req.session.userId;
-  const templateVars = { user: userId };
+  // const userId = req.session.userId;
+  // const templateVars = { user: userId };
 
   // Temporary db user to test ajax call with forms
-  // const templateVars = { user: 1 };
-  res.render("index", templateVars);
+  const templateVars = { user: 1 };
+  res.render("index-map-popup", templateVars);
 });
 
 app.get('/brody', (req, res) => {
