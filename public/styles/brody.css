@@ -23,6 +23,7 @@
 }
 
 .map {
+  z-index: 1;
   width: 70%;
 }
 
@@ -52,13 +53,11 @@
 
 .tab-content {
   justify-content: center;
-}
-
-p {
   display: flex;
   justify-content: center;
   padding: 0 0 1rem 0;
 }
+
 
 .add-to-favourites {
   color: black;
@@ -76,4 +75,5 @@ p {
   color: grey;
   text-decoration: none;
 }
+
 

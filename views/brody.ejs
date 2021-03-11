@@ -10,7 +10,7 @@
 
 <body>
   <main>
-    <% if (user) { %>
+    <% if (!user) { %>
     <div class="map-wrapper">
       <div class="map-nav">
         <ul class="tabs">
@@ -18,19 +18,31 @@
           <li data-tab-target="#my-favourites" class="tab">My Favourites</li>
         </ul>
         <div class="tab-content">
-          <div id="my-maps" data-tab-content class="active">
-            <!-- container for all maps-->
-            <!-- div for each map result -->
-            <p>Testing data</p>
-            <p>More test data</p>
-            <p>more test data</p>
+          <div class="my-maps-container">
+            <div id="my-maps" data-tab-content class="active">
+              <div>
+                <p>Testing data</p>
+              </div>
+              <div>
+                <p>More test data</p>
+              </div>
+              <div>
+                <p>more test data</p>
+              </div>
+            </div>
           </div>
-          <div id="my-favourites" data-tab-content>
-            <!-- card container -->
-
-            <p>Testing data favourites</p>
-            <p>Helllllo</p>
-            <p>Holaaaa</p>
+          <div class="my-favourites-container">
+            <div id="my-favourites" data-tab-content>
+              <div>
+                <p>Testing data favourites</p>
+              </div>
+              <div>
+                <p>Helllllo</p>
+              </div>
+              <div>
+                <p>Holaaaa</p>
+              </div>
+            </div>
           </div>
           <span class="absolute-nav-link">
             <a class="nav-item nav-link create-map-cta" href=#>Create a Map</a>
@@ -61,30 +73,55 @@
     <% } else { %>
     <div class="map-wrapper">
       <div class="map-nav">
-        <h3 class="map-title">Best Eats in Vancouver</h3>
-        <!-- <span>
-          <a class="add-to-favourites" href="/maps">Add to Favourites</a>
-        </span> -->
-        <div class="tab-content">
-          <div>
-            <p>Forage</p>
-            <p>Phnom Penh Restaurant</p>
-            <p>Cafe Medina</p>
-            <p>Black + Blue</p>
-            <p>Sal y limon</p>
-            <p>Miku Vancouver</p>
-          </div>
-          <span class="absolute-nav-link">
-            <a class="nav-item nav-link create-map-cta" href=#>Add a New Pin</a>
-          </span>
-        </div>
+        <h3 class="map-title">
+          <-- Best Eats in Vancouver</h3>
+            <% if (!user) { %>
+            <span>
+              <a class="add-to-favourites" href="/maps">Add to Favourites</a>
+            </span>
+            <div class="tab-content">
+              <div>
+                <p>Forage</p>
+                <p>Phnom Penh Restaurant</p>
+                <p>Cafe Medina</p>
+                <p>Black + Blue</p>
+                <p>Sal y limon</p>
+                <p>Miku Vancouver</p>
+              </div>
+              <% } else { %>
+              <div class="tab-content">
+                <div>
+                  <p>Forage</p>
+                  <p>Phnom Penh Restaurant</p>
+                  <p>Cafe Medina</p>
+                  <p>Black + Blue</p>
+                  <p>Sal y limon</p>
+                  <p>Miku Vancouver</p>
+                </div>
+                <% } %>
+                <% if (!user) { %>
+                <span class="absolute-nav-link">
+                  <a class="nav-item nav-link create-map-cta" href=#>Add a New Pin</a>
+                </span>
+              </div>
+            </div>
+            <div class="map">
+              <img src="https://i.stack.imgur.com/1XPRz.png">
+            </div>
       </div>
-      <div class="map">
-        <img src="https://i.stack.imgur.com/1XPRz.png">
-      </div>
+      <% } else { %>
+    </div>
+    </div>
+    <div class="map">
+      <img src="https://i.stack.imgur.com/1XPRz.png">
+    </div>
     </div>
     <% } %>
+    <% } %>
   </main>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
+    type="text/javascript"></script>
 </body>
 
 </html>
