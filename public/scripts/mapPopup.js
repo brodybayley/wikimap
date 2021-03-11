@@ -17,11 +17,15 @@ $(() => {
     $.ajax({
       method: 'POST',
       url: '/api/maps',
-      data: $('form').serialize()
+      data: $('form').serialize(),
+      success: function() {
+        window.location.replace('http://localhost:8080/maps');
+      }
     })
       .then(res => {
-        console.log(res)
+        console.log(res);
       })
       .catch(err => console.log(err));
   });
+
 });
