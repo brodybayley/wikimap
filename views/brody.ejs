@@ -51,7 +51,7 @@
           </span>`
         </div>
       </div>
-      <div class="map-container">
+      <div class="map-container-maps">
         <div id="floating-panel">
           <input id="address" type="textbox" value="Sydney, NSW" />
           <input id="submit" type="button" value="Find" />
@@ -78,7 +78,7 @@
             <p class="cross">x</p>
             <figure></figure>
             <ul class="dropdown">
-              <li><a class="nav-item nav-link create-map-cta" href=#>Edit a Map</a></li>
+              <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
               <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
             </ul>
           </div>
@@ -110,11 +110,11 @@
             <% } %>
             <% if (!user) { %>
             <span class="absolute-nav-link">
-              <a class="nav-item nav-link create-map-cta" href=#>Add a New Pin</a>
+              <a class="nav-item nav-link add-pin-cta" href=#>Add a New Pin</a>
             </span>
           </div>
         </div>
-        <div class="map-container">
+        <div class="map-container-maps">
           <div id="floating-panel">
             <input id="address" type="textbox" value="Sydney, NSW" />
             <input id="submit" type="button" value="Find" />
@@ -124,7 +124,7 @@
       </div>
     </div>
     <% } else { %>
-    <div class="map-container">
+    <div class="map-container-maps">
       <div id="floating-panel">
         <input id="address" type="textbox" value="Sydney, NSW" />
         <input id="submit" type="button" value="Find" />
@@ -183,7 +183,7 @@
   </div>
 
   <!-- Add new pin -->
-  <div class="form-popup" id="add-point">
+  <div class="form-popup" id="add-pin-popup">
     <form method="POST" action="/:map_id/points" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Add a Point</label>
