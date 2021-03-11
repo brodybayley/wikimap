@@ -57,8 +57,13 @@ app.get("/", (req, res) => {
   const templateVars = {user: userId};
   */
   // Temporary db user to test ajax call with forms
-  const templateVars = {user: 1};
+  const templateVars = { user: 1 };
   res.render("index-map-popup", templateVars);
+});
+
+app.get('/brody', (req, res) => {
+  const templateVars = { user: null }
+  res.render('brody', templateVars;
 });
 
 app.listen(PORT, () => {
