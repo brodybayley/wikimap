@@ -1,11 +1,27 @@
-<%- include('partials/_header') %>
-<%- include('partials/_head') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login - WikiMap</title>
+    <%- include('partials/_header') %>
+  </head>
+  <%- include('partials/_head') %>
+  <body>
+    <main>
+      <h1 class="page-heading">Log In</h1>
+      <form action="/login" method="POST" class="user-account-form">
+        <div class="form-input">
+          <label for="login-email" class="side-panel-heading">Email:</label>
+          <input type="email" name="email" placeholder="Enter email" required>
+        </div>
+        <div class="form-input">
+          <label for="login-password" class="side-panel-heading">Password:</label>
+          <input type="password" name="password" placeholder="Enter password" required>
+        </div>
+        <div class="form-button">
+          <button class="button-text" type="submit">Log In!</button>
+        </div>
+      </form>
+    </main>
+  </body>
 
-<body>
-  <h1>Login</h1>
-  <form action="/login" method="POST">
-    <input type="email" name="email" placeholder="Type your email">
-    <input type="password" name="password" placeholder="Type your password">
-    <button class="btn btn-primary" type="submit">Log in!</button>
-  </form>
-</body>
+</html>

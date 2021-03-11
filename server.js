@@ -52,23 +52,21 @@ app.use("/api/points", pointsRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-
-  // const userId = req.session.userId;
-  // const templateVars = { user: userId };
-
-  // Temporary db user to test ajax call with forms
-  const templateVars = { user: 1 };
+  const userId = req.session.userId;
+  const templateVars = { user: userId };
   res.render("index-map-popup", templateVars);
 });
 
 app.get('/brody', (req, res) => {
-  const templateVars = { user: null }
+  const userId = req.session.userId;
+  const templateVars = { user: userId };
   res.render('brody', templateVars);
 });
 
 // temporary map route
 app.get('/maps', (req, res) => {
-  const templateVars = { user: 1 };
+  const userId = req.session.userId;
+  const templateVars = { user: userId };
   res.render('maps', templateVars);
 });
 
