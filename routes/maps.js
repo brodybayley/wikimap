@@ -26,7 +26,9 @@ router.get('/:id', (req, res) => {
 
 // POST /maps
 router.post('/', (req, res) => {
-  const userId = req.session.userId;
+  // const userId = req.session.userId;
+  const userId = 1;
+  console.log(req.body);
   addMap({ ...req.body, user_id: userId })
     .then(maps => res.json(maps))
     .catch(err => {
