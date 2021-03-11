@@ -78,7 +78,6 @@ router.get("/:id/favourites", (req, res) => {
 });
 
 router.post("/:id/favourites", (req, res) => {
-  console.log('req.body', req.body)
   const userId = req.params.id;
   const mapId = req.body.mapId;
   addFavouriteMap(userId, mapId)
