@@ -27,9 +27,14 @@
     </div>
     <div class="form-popup" id="create-map-popup">
       <form method="POST" action="#">
-        <label for="map-popup" class="side-panel-heading">Create a Map</label>
-        <input type="text" id="input-map-title" name="map-title" placeholder="Enter map title...">
-        <textarea type="text" id="input-map-description" name="map-description" placeholder="Enter map description..."></textarea>
+        <div class="form-header">
+          <label for="map-popup" class="side-panel-heading">Create a Map</label>
+          <i id="close-button" class="fas fa-times-circle"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" id="input-map-title" name="map-title" placeholder="Enter map title..." required>
+          <textarea type="text" id="input-map-description" name="map-description" placeholder="Enter map description..."></textarea>
+        </div>
         <button type="submit" class="button-text">Create</button>
       </form>
     </div>
