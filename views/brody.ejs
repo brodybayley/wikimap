@@ -10,7 +10,7 @@
 
 <body>
   <main>
-    <% if (!user) { %>
+    <% if (user) { %>
     <div class="map-wrapper">
       <div class="map-nav">
         <ul class="tabs">
@@ -73,41 +73,56 @@
     <% } else { %>
     <div class="map-wrapper">
       <div class="map-nav">
-        <h3 class="map-title">
-          <-- Best Eats in Vancouver</h3>
+        <ul class="nav">
+          <li><a href="www.backbutton.com">←</a></li>
+          <li>
+            <h3>Best Eats in Vancouver</h3>
+          </li>
+          <div class="kebab">
+            <figure></figure>
+            <figure class="middle"></figure>
+            <p class="cross">x</p>
+            <figure></figure>
+            <ul class="dropdown">
+              <li><a href="http://www.g.com">Edit Map</a></li>
+              <li><a href="http://www.g.com">Delete Map</a></li>
+            </ul>
+          </div>
+        </ul>
+
+        <% if (!user) { %>
+        <span>
+          <a class="add-to-favourites" href="/maps">Add to Favourites</a>
+        </span>
+        <div class="tab-content">
+          <div>
+            <p>Forage</p>
+            <p>Phnom Penh Restaurant</p>
+            <p>Cafe Medina</p>
+            <p>Black + Blue</p>
+            <p>Sal y limon</p>
+            <p>Miku Vancouver</p>
+          </div>
+          <% } else { %>
+          <div class="tab-content">
+            <div>
+              <p>Forage</p>
+              <p>Phnom Penh Restaurant</p>
+              <p>Cafe Medina</p>
+              <p>Black + Blue</p>
+              <p>Sal y limon</p>
+              <p>Miku Vancouver</p>
+            </div>
+            <% } %>
             <% if (!user) { %>
-            <span>
-              <a class="add-to-favourites" href="/maps">Add to Favourites</a>
+            <span class="absolute-nav-link">
+              <a class="nav-item nav-link create-map-cta" href=#>Add a New Pin</a>
             </span>
-            <div class="tab-content">
-              <div>
-                <p>Forage</p>
-                <p>Phnom Penh Restaurant</p>
-                <p>Cafe Medina</p>
-                <p>Black + Blue</p>
-                <p>Sal y limon</p>
-                <p>Miku Vancouver</p>
-              </div>
-              <% } else { %>
-              <div class="tab-content">
-                <div>
-                  <p>Forage</p>
-                  <p>Phnom Penh Restaurant</p>
-                  <p>Cafe Medina</p>
-                  <p>Black + Blue</p>
-                  <p>Sal y limon</p>
-                  <p>Miku Vancouver</p>
-                </div>
-                <% } %>
-                <% if (!user) { %>
-                <span class="absolute-nav-link">
-                  <a class="nav-item nav-link create-map-cta" href=#>Add a New Pin</a>
-                </span>
-              </div>
-            </div>
-            <div class="map">
-              <img src="https://i.stack.imgur.com/1XPRz.png">
-            </div>
+          </div>
+        </div>
+        <div class="map">
+          <img src="https://i.stack.imgur.com/1XPRz.png">
+        </div>
       </div>
       <% } else { %>
     </div>
