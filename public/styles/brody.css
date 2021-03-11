@@ -81,9 +81,10 @@
   font-style: italic;
 }
 
-.arrow-button {
-  color: none;
-  background-color: none;
+#arrow-back-button button {
+  display: inline-block;
+  color: grey;
+  background-color: white;
   border: none;
   padding: 0;
   border-radius: 0;
@@ -103,6 +104,7 @@
 
 .map-container {
   display: flex;
+  flex-direction: column;
   align-items: rows;
   background-color: white;
 }
