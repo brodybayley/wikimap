@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
+const { getUserByEmail } = require('../db/queries/users-queries');
 
 const login = (email, password) => {
-  getUserByEmail(email)
+  return getUserByEmail(email)
     .then(user => {
       if (user.password === password) {
         return user;
@@ -14,7 +14,7 @@ const login = (email, password) => {
 exports.login = login;
 
 router.get('/', (req, res) => {
-  const templateVars = {user: null};
+  const templateVars = { user: null };
   res.render('login', templateVars);
 });
 
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   login(email, password)
     .then(user => {
       if (!user) {
-        res.send({ error: 'error' });
+        res.send('Wrong login. Please check your email or password and try again.');
       }
       req.session.userId = user.id;
       res.redirect('/');

@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const { getMaps, getMapsById, addMap, deleteMap, editMap } = require('../db/queries/maps-queries');
 
 // GET /maps/
@@ -26,8 +26,10 @@ router.get('/:id', (req, res) => {
 
 // POST /maps
 router.post('/', (req, res) => {
-  const userId = req.session.userId;
-  addMap({...req.body, user_id: userId})
+  // const userId = req.session.userId;
+  const userId = 1;
+  console.log(req.body);
+  addMap({ ...req.body, user_id: userId })
     .then(maps => res.json(maps))
     .catch(err => {
       res
@@ -39,7 +41,7 @@ router.post('/', (req, res) => {
 // POST /maps/:id
 router.post('/:id', (req, res) => {
   const mapId = req.params.id;
-  editMap({...req.body, id: mapId})
+  editMap({ ...req.body, id: mapId })
     .then(maps => res.json(maps))
     .catch(err => {
       res

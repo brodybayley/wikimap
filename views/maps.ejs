@@ -1,11 +1,34 @@
-<%- include('partials/_header') %>
+<!-- <%- include('partials/_header') %> -->
+<%- include('partials/_head') %>
 
-<body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="scripts/mapsApi.js">
+      </script>
+  </head>
+  <body>
+    <h1>Map Page</h1>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW" />
+      <input id="submit" type="button" value="Find" />
+    </div>
+    <div id="map"></div>
 
-  <main>
-    <h3>Maps page</h3>
-    <form class="form-inline" action="/maps" method="POST">
-    </form>
-  </main>
 
-</body>
+    
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      async defer src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>

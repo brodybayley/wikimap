@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
+const { registerUser } = require('../db/queries/users-queries');
 
 router.get('/', (req, res) => {
   const templateVars = {user: null};

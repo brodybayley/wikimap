@@ -45,16 +45,39 @@ app.use("/api/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/api/maps", mapsRoutes);
-app.use("/api/maps", pointsRoutes);
+app.use("/api/points", pointsRoutes);
 
+// Temporary helper func, to be moved w/ all other clients routes to clients.js
+const { getUserById } = require('./db/queries/users-queries');
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   const userId = req.session.userId;
-  const templateVars = {user: userId};
-  res.render("index", templateVars);
+  getUserById(userId)
+    .then(user => {
+      const templateVars = { user };
+      res.render("index-map-popup", templateVars);
+    });
+});
+
+app.get('/brody', (req, res) => {
+  const userId = req.session.userId;
+  const templateVars = { user: userId };
+  res.render('brody', templateVars);
+});
+
+// temporary map route
+app.get('/maps', (req, res) => {
+  const userId = req.session.userId;
+  const templateVars = { user: userId };
+  res.render('maps', templateVars);
+});
+
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.send('Sign out successful: redirecting back to home page.');
 });
 
 app.listen(PORT, () => {
