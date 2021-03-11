@@ -22,11 +22,6 @@
   background-color: white;
 }
 
-.map {
-  z-index: 1;
-  width: 70%;
-}
-
 .tabs {
   display: flex;
   justify-content: space-around;
@@ -62,10 +57,11 @@
 .add-to-favourites {
   color: black;
   text-decoration: none;
-  padding: 0 0 10px 0;
+  padding: 10px 0 10px 0;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
 }
 
 .absolute-nav-link {
@@ -76,3 +72,37 @@
   text-decoration: none;
 }
 
+.created-by {
+  font-size: 10px;
+}
+
+.map-description {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.arrow-button {
+  color: none;
+  background-color: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  outline: none;
+  min-width: 0;
+  transition: 0;
+}
+
+#map {
+  min-height: 500px;
+  min-width: 600px;
+}
+
+#floating-panel {
+  font-size: 24px;
+}
+
+.map-container {
+  display: flex;
+  align-items: rows;
+  background-color: white;
+}

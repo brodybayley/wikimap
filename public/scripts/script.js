@@ -28,4 +28,8 @@ kebab.addEventListener('click', function () {
   dropdown.classList.toggle('active');
 })
 
+// Controls back arrow
+function goBack() {
+  window.history.back();
+}
 

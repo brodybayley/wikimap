@@ -4,6 +4,8 @@
 <head>
   <title>WikiMaps</title>
   <%- include('partials/_head') %>
+  <script src="scripts/mapsApi.js">
+  </script>
 </head>
 
 <%- include('partials/_header') %>
@@ -49,8 +51,12 @@
           </span>`
         </div>
       </div>
-      <div class="map">
-        <img src="https://i.stack.imgur.com/1XPRz.png">
+      <div class="map-container">
+        <div id="floating-panel">
+          <input id="address" type="textbox" value="Sydney, NSW" />
+          <input id="submit" type="button" value="Find" />
+        </div>
+        <div id="map"></div>
       </div>
     </div>
     <% } else { %>
@@ -60,9 +66,11 @@
 
         <% if (!user) { %>
         <ul class="nav">
-          <li><a href="www.backbutton.com">←</a></li>
+          <!-- <div class="arrow-button">
+            <button onclick="goBack()">←</button>
+          </div> -->
           <li>
-            <h3>Best Eats in Vancouver</h3>
+            <h3> ← Best Eats in Vancouver</h3>
           </li>
           <div class="kebab">
             <figure></figure>
@@ -74,9 +82,11 @@
               <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
             </ul>
           </div>
+          <p class="map-description">Amazing food in and around downtown Vancouver. I'm getting hungry...</p>
+          <p class="created-by">Created by: Bob The Hungry Builder</p>
         </ul>
         <span>
-          <a class="add-to-favourites" href="/maps">Add to Favourites</a>
+          <a class="add-to-favourites" href="/:id/favourites">❤ Add to Favourites</a>
         </span>
         <div class="tab-content">
           <div>
@@ -104,16 +114,22 @@
             </span>
           </div>
         </div>
-        <div class="map">
-          <img src="https://i.stack.imgur.com/1XPRz.png">
+        <div class="map-container">
+          <div id="floating-panel">
+            <input id="address" type="textbox" value="Sydney, NSW" />
+            <input id="submit" type="button" value="Find" />
+          </div>
+          <div id="map"></div>
         </div>
       </div>
-      <% } else { %>
     </div>
-    </div>
-    <div class="map">
-      <img src="https://i.stack.imgur.com/1XPRz.png">
-    </div>
+    <% } else { %>
+    <div class="map-container">
+      <div id="floating-panel">
+        <input id="address" type="textbox" value="Sydney, NSW" />
+        <input id="submit" type="button" value="Find" />
+      </div>
+      <div id="map"></div>
     </div>
     <% } %>
     <% } %>
