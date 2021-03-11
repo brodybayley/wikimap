@@ -10,13 +10,13 @@
 
 <body>
   <main>
+    <% if (user) { %>
     <div class="map-wrapper">
       <div class="map-nav">
         <ul class="tabs">
           <li data-tab-target="#my-maps" class="active tab">My Maps</li>
           <li data-tab-target="#my-favourites" class="tab">My Favourites</li>
         </ul>
-
         <div class="tab-content">
           <div id="my-maps" data-tab-content class="active">
             <!-- container for all maps-->
@@ -42,6 +42,7 @@
       </div>
     </div>
 
+
     <div class="form-popup" id="create-map-popup">
       <form method="POST" action="/api/maps" class="map-form">
         <div class="form-header">
@@ -57,13 +58,13 @@
       </form>
     </div>
 
+    <% } else { %>
     <div class="map-wrapper">
       <div class="map-nav">
         <h3 class="map-title">Best Eats in Vancouver</h3>
-        <span>
+        <!-- <span>
           <a class="add-to-favourites" href="/maps">Add to Favourites</a>
-        </span>
-
+        </span> -->
         <div class="tab-content">
           <div>
             <p>Forage</p>
@@ -82,6 +83,7 @@
         <img src="https://i.stack.imgur.com/1XPRz.png">
       </div>
     </div>
+    <% } %>
   </main>
 </body>
 

@@ -19,6 +19,7 @@
 .map-nav {
   width: 30%;
   position: relative;
+  background-color: white;
 }
 
 .map {
@@ -57,7 +58,6 @@ p {
   display: flex;
   justify-content: center;
   padding: 0 0 1rem 0;
-  border-bottom: 1px solid grey;
 }
 
 .add-to-favourites {
