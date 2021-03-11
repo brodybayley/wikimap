@@ -41,7 +41,7 @@ header {
 
   a {
     text-decoration: none;
-    color: $primary-color;
+    color: $text-color;
 
     &:hover {
       color: $hover-primary-color;
@@ -59,10 +59,6 @@ header {
   }
 
 }
-
-// div.nav-dropdown{
-//   display:none;
-// }
 
 .nav-dropdown {
   z-index: 9999;
