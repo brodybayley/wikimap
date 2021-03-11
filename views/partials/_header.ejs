@@ -6,9 +6,20 @@
       <span class="nav-item">
         <a class="nav-item create-map-cta" href=#>Create a Map</a>
       </span>
-      <span class="nav-item nav-user">
+      <span class="nav-item nav-user dropdown">
         <div class="nav-greeting">Hello there, <%= user.name%>!</div>
         <i class="fas fa-caret-down icon"></i>
+        <div class="nav-dropdown-content">
+          <span class="navbar">
+            <a id="nav-my-maps" class="nav-item" href="/maps">My Maps</a>
+          </span>
+          <span class="navbar">
+            <a id="nav-my-fav" class="nav-item" href="/favourites">My Favourites</a>
+          </span>
+          <span class="navbar">
+            <a id="nav-logout" class="nav-item" href="/logout">Log Out</a>
+          </span>
+        </div>
       </span>
       <% } else { %>
       <span class="nav-item">
@@ -21,17 +32,3 @@
     </div>
   </nav>
 </header>
-
-<!-- <div class="dropdown-container"> -->
-  <div class="nav-dropdown">
-    <span class="navbar">
-      <a id="nav-my-maps" class="nav-item" href="/maps">My Maps</a>
-    </span>
-    <span class="navbar">
-      <a id="nav-my-fav" class="nav-item" href="/favourites">My Favourites</a>
-    </span>
-    <span class="navbar">
-      <a id="nav-logout" class="nav-item" href="/logout">Log Out</a>
-    </span>
-  </div>
-<!-- </div> -->

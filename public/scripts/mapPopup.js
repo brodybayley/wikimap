@@ -1,4 +1,5 @@
 /* global $ */
+/* global window */
 
 $(() => {
   // Map form pop up appears
