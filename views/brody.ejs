@@ -46,33 +46,19 @@
           </div>
           <span class="absolute-nav-link">
             <a class="nav-item nav-link create-map-cta" href=#>Create a Map</a>
-          </span>
+          </span>`
         </div>
       </div>
       <div class="map">
         <img src="https://i.stack.imgur.com/1XPRz.png">
       </div>
     </div>
-
-
-    <div class="form-popup" id="create-map-popup">
-      <form method="POST" action="/api/maps" class="map-form">
-        <div class="form-header">
-          <label for="map-form" class="side-panel-heading">Create a Map</label>
-          <i id="close-button" class="fas fa-times-circle"></i>
-        </div>
-        <div class="form-input">
-          <input type="text" id="input-map-title" name="title" placeholder="Enter map title..." required>
-          <textarea type="text" id="input-map-description" name="description"
-            placeholder="Enter map description..."></textarea>
-        </div>
-        <button type="submit" class="button-text">Create</button>
-      </form>
-    </div>
-
     <% } else { %>
     <div class="map-wrapper">
       <div class="map-nav">
+        <!-- <h3 class="map-title">Best Eats in Vancouver</h3> -->
+
+        <% if (!user) { %>
         <ul class="nav">
           <li><a href="www.backbutton.com">←</a></li>
           <li>
@@ -84,13 +70,11 @@
             <p class="cross">x</p>
             <figure></figure>
             <ul class="dropdown">
-              <li><a href="http://www.g.com">Edit Map</a></li>
-              <li><a href="http://www.g.com">Delete Map</a></li>
+              <li><a class="nav-item nav-link create-map-cta" href=#>Edit a Map</a></li>
+              <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
             </ul>
           </div>
         </ul>
-
-        <% if (!user) { %>
         <span>
           <a class="add-to-favourites" href="/maps">Add to Favourites</a>
         </span>
@@ -134,6 +118,76 @@
     <% } %>
     <% } %>
   </main>
+
+  <!-- Create a map -->
+  <div class="form-popup" id="create-map-popup">
+    <form method="POST" action="/api/maps" class="map-form">
+      <div class="form-header">
+        <label for="map-form" class="side-panel-heading">Create a Map</label>
+        <i id="close-button" class="fas fa-times-circle"></i>
+      </div>
+      <div class="form-input">
+        <input type="text" id="input-map-title" name="title" placeholder="Enter map title..." required>
+        <textarea type="text" id="input-map-description" name="description"
+          placeholder="Enter map description..."></textarea>
+      </div>
+      <button type="submit" class="button-text">Create</button>
+    </form>
+  </div>
+
+  <!-- Edit a map -->
+  <div class="form-popup" id="edit-map-popup">
+    <form method="POST" action="/api/maps/:id" class="map-form">
+      <div class="form-header">
+        <label for="map-form" class="side-panel-heading">Edit Map</label>
+        <i id="close-button" class="fas fa-times-circle"></i>
+      </div>
+      <div class="form-input">
+        <input type="text" id="input-map-title" name="title" placeholder="New map title..." required>
+        <textarea type="text" id="input-map-description" name="description"
+          placeholder="New map description..."></textarea>
+      </div>
+      <button type="submit" class="button-text">Update</button>
+    </form>
+  </div>
+
+  <!-- Delete a map -->
+  <div class="form-popup" id="delete-map-popup">
+    <form method="DELETE" action="/api/maps/:id" class="map-form">
+      <div class="form-header">
+        <label for="map-form" class="side-panel-heading">Are you sure you want to delete the map?</label>
+        <i id="close-button" class="fas fa-times-circle"></i>
+      </div>
+      <br>
+      <div class="delete-cancel-buttons">
+        <button type="submit" class="button-text">DELETE</button>
+        <button type="submit" class="button-text">CANCEL</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Add new pin -->
+  <div class="form-popup" id="add-point">
+    <form method="POST" action="/:map_id/points" class="map-form">
+      <div class="form-header">
+        <label for="map-form" class="side-panel-heading">Add a Point</label>
+        <i id="close-button" class="fas fa-times-circle"></i>
+      </div>
+      <div class="form-input">
+        <input type="text" id="input-map-title" name="title" placeholder="Enter pin title..." required>
+        <textarea type="text" id="input-map-description" name="description"
+          placeholder="Enter pin description..."></textarea>
+        <br>
+        <form action="/action_page.php">
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
+          <input type="submit">
+        </form>
+      </div>
+      <button type="submit" class="button-text">Add</button>
+    </form>
+  </div>
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
     type="text/javascript"></script>
