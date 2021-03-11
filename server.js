@@ -45,7 +45,7 @@ app.use("/api/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/api/maps", mapsRoutes);
-app.use("/api/maps", pointsRoutes);
+app.use("/api/points", pointsRoutes);
 
 
 // Home page
@@ -57,13 +57,14 @@ app.get("/", (req, res) => {
   const templateVars = {user: userId};
   */
   // Temporary db user to test ajax call with forms
-  const templateVars = {user: 1};
+  const templateVars = { user: 1 };
   res.render("index-map-popup", templateVars);
 });
 
 // temporary map route
 app.get('/maps', (req, res) => {
-  res.render('maps');
+  const templateVars = { user: 1 };
+  res.render('maps', templateVars);
 });
 
 app.listen(PORT, () => {

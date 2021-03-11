@@ -80,12 +80,12 @@ const addPoint = point => {
     point.description,
     point.longitude,
     point.latitude,
-    point.image_url
+    "point.image_url" //will be properly implemented when the form is passed
   ];
 
   return db
     .query(queryStr, values)
-    .then(res => res.rows[0]);
+    .then(res => res.rows);
 };
 
 

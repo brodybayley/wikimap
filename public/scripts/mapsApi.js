@@ -24,15 +24,31 @@ function initMap() {
     });
 }
 
-const addPoint = (result) => {
-    const userId = req.params.userId;
-    const mapId = req.params.map_id;
+const addPoint = (results) => {
+    console.log('addPoint called')
+    const mapId = 1;
     const lat = results[0].geometry.location.latitude
     const long = results[0].geometry.location.longitude
     const title = results[0].address_components.formatted_address
-    return db.query(`INSERT INTO POINTS (user_id, map_id, title, latitude, longitude)
-         VALUES ($1, $2, $3, $4, $5)
-         RETURNING *;`, [userId, mapId, title, latitude, longitude])
+    //     point.map_id,
+    //     point.user_id,
+    //     point.title,
+    //     point.description,
+    //     point.longitude,
+    //     point.latitude,
+    //     point.image_url
+    //   ];
+    $.post(`/api/points/${mapId}/points`, { user_id: 1, map_id: mapId, latitude: lat, title: 'testTitle', image: 'testImage', longitude: long })
+        .then((res) => {
+            console.log('res', res);
+        }
+        )
+        .catch((err) => {
+            console.log('err', err)
+        })
+    // return db.query(`INSERT INTO POINTS (user_id, map_id, title, latitude, longitude)
+    //      VALUES ($1, $2, $3, $4, $5)
+    //      RETURNING *;`, [userId, mapId, title, latitude, longitude])
 }
 
 
@@ -42,7 +58,7 @@ function geocodeAddress(geocoder, resultsMap) {
     geocoder.geocode({ address: address }, (results, status) => {
         if (status === "OK") {
             console.log('results', results)
-            addPoint(result);
+            addPoint(results);
             //results here is an object, containing a formatted address,
             //and a place_id.
             resultsMap.setCenter(results[0].geometry.location);
@@ -57,3 +73,4 @@ function geocodeAddress(geocoder, resultsMap) {
         }
     });
 }
+
