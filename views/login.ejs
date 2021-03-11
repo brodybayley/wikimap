@@ -7,18 +7,19 @@
   <%- include('partials/_head') %>
   <body>
     <main>
-      <br>
-      <h1>Login</h1>
-      <form action="/login" method="POST" class="login-form">
+      <h1 class="page-heading">Log In</h1>
+      <form action="/login" method="POST" class="user-account-form">
         <div class="form-input">
           <label for="login-email" class="side-panel-heading">Email:</label>
-          <input type="email" name="email" placeholder="Type your email">
+          <input type="email" name="email" placeholder="Enter email" required>
         </div>
         <div class="form-input">
           <label for="login-password" class="side-panel-heading">Password:</label>
-          <input type="password" name="password" placeholder="Type your password">
+          <input type="password" name="password" placeholder="Enter password" required>
         </div>
-        <button class="btn btn-primary" type="submit">Log in!</button>
+        <div class="form-button">
+          <button class="button-text" type="submit">Log In!</button>
+        </div>
       </form>
     </main>
   </body>
