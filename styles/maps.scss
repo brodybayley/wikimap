@@ -64,8 +64,8 @@ a, li {
   text-decoration: none;
 }
 
-.nav {
-  > li {
+ul.nav {
+  li {
     display: inline-block;
     cursor: pointer;
     &:hover {
@@ -108,6 +108,22 @@ a, li {
   transform: scale(1);
   transition: all 0.25s cubic-bezier(.5,1.8,.9,.8);
 }
+
+#custom-map-feed {
+  display: none;
+}
+
+#custom-point-feed {
+  display: flex;
+  flex-direction: column;
+
+
+  .point-panel-heading {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 
 @media screen and (max-width: 800px) {
   .follow {

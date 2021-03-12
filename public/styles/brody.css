@@ -72,14 +72,6 @@
   text-decoration: none;
 }
 
-.created-by {
-  font-size: 10px;
-}
-
-.map-description {
-  font-size: 14px;
-  font-style: italic;
-}
 
 #arrow-back-button button {
   display: inline-block;
