@@ -21,6 +21,12 @@ $(() => {
     $('#add-pin-popup').toggle();
   });
 
+  $('.edit-pin-cta').on('click', event => {
+    event.preventDefault();
+
+    $('#edit-point-popup').toggle();
+  });
+
   // Map form pop up disappears
   $('.close-button').on('click', event => {
     // $('.form-popup').toggle();

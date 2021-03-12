@@ -44,7 +44,7 @@
     <div class="form-popup" id="add-pin-popup">
       <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
         <div class="form-header">
-          <label for="map-form" class="side-panel-heading">Add a Point</label>
+          <label for="map-form" class="side-panel-heading">Add a Pin</label>
           <i class="fas fa-times-circle close-button"></i>
         </div>
         <div class="form-input">
@@ -58,10 +58,31 @@
           <div class="form-button">
             <button type="submit" class="button-text">Add</button>
           </div>
+        </div>
       </form>
     </div>
-    </form>
+    <!-- Edit a point -->
+    <div class="form-popup" id="edit-point-popup">
+      <form method="POST" action="/:map_id/points/:point_id" class="map-form">
+        <div class="form-header">
+          <label for="map-form" class="side-panel-heading">Edit Pin</label>
+          <i class="fas fa-times-circle close-button"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" class="input-map-title" name="title" placeholder="New pin title..." required>
+          <textarea type="text" class="input-map-description" name="description"
+            placeholder="New pin description..."></textarea>
+          <br>
+          <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
+          <div class="form-button">
+            <button type="submit" class="button-text">Edit</button>
+          </div>
+        </div>
+      </form>
     </div>
+
     <div class="map-wrapper">
       <div id="custom-map-feed" class="map-nav">
         <% if (user) { %>
@@ -118,9 +139,10 @@
         <div>
           <span class="selector-bar">
             <a class="edit-map-cta" href=#>✏️ Edit a Map</a>
-            <div class="heart"></div>
+            <div class="heart" href="/:id/favourites"></div>
             <!-- <a class="add-to-favourites" href="/:id/favourites">❤️ Add to Favourites</a> -->
-            <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a New Pin</a>
+            <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a Pin</a>
+            <a class="nav-item nav-link edit-pin-cta" href=#>✏️ Edit a Pin</a>
           </span>
         </div>
         <% } %>
