@@ -17,8 +17,7 @@ $(() => {
 
   $('.add-pin-cta').on('click', event => {
     event.preventDefault();
-
-    $('#add-pin-popup').toggle();
+    $('#address').focus();
   });
 
   $('.edit-pin-cta').on('click', event => {

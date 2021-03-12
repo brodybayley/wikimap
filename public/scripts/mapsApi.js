@@ -14,7 +14,7 @@
 // });
 
 function initMap() {
-    const mapId = 1;
+    const mapId = 2;
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: { lat: 49.2827, lng: -123.1207 },
@@ -51,7 +51,7 @@ function initMap() {
 
 const addPoint = ({ latitude, longitude }, data) => {
     console.log('addPoint called')
-    const mapId = 1;
+    const mapId = 2;
     const title = data[0].value;
     const description = data[1].value;
     const image_url = data[2].value;
@@ -64,7 +64,7 @@ const addPoint = ({ latitude, longitude }, data) => {
     //     point.image_url
     //   ];
     $.post({
-        url: `/api/points/${mapId}/points`,
+        url: `/api/maps/${mapId}/points`,
         // data: $('#point-form').serialize()
         data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
     })
