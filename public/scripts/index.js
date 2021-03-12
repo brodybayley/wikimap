@@ -35,7 +35,7 @@ $(() => {
   const $map = $(`
     <div class="map-card">
       <div class="img-mask">
-        <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg" alt="map" class="map-thumbnail">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=<%= process.env.API_KEY %>" alt="map" class="map-thumbnail">
       </div>
       <div class="map-heading">${mapData.title}</div>
     </div>

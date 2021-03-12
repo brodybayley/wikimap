@@ -30,36 +30,43 @@ div.hero-container {
   align-items: center;
   margin: 4rem 0;
 
-  .hero-description {
-    margin-right: 2rem;
-    color: $text-color;
+  .map-feed {
+    display:flex;
+    flex-direction: row;
 
-    h1 {
-      font-size: 48px;
-      margin: 0;
+    .hero-description {
+      margin-right: 2rem;
+      color: $text-color;
+
+      h1 {
+        font-size: 48px;
+        margin: 0;
+      }
+
+      p {
+        border: none;
+      }
     }
 
-    p {
-      border: none;
+    .hero-cta {
+      margin-top: 48px;
     }
+
+    .img-mask {
+      width: 830px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
+    }
+
+    .hero-map {
+      width: 100%;
+      height: auto;
+    }
+
   }
 
-  .hero-cta {
-    margin-top: 48px;
-  }
-
-  .img-mask {
-    width: 830px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 3px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
-  }
-
-  .hero-map {
-    width: 100%;
-    height: auto;
-  }
 }
 
 div.map-card-container {
