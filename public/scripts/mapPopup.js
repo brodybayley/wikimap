@@ -15,12 +15,6 @@ $(() => {
     $('#edit-map-popup').toggle();
   });
 
-  $('.delete-map-cta').on('click', event => {
-    event.preventDefault();
-
-    $('#delete-map-popup').toggle();
-  });
-
   $('.add-pin-cta').on('click', event => {
     event.preventDefault();
 
@@ -28,8 +22,9 @@ $(() => {
   });
 
   // Map form pop up disappears
-  $('#close-button').on('click', () => {
-    $('.form-popup').toggle();
+  $('.close-button').on('click', event => {
+    // $('.form-popup').toggle();
+    $(event.target).closest('.form-popup').toggle();
   });
 
   // Create new map to database

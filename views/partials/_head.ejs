@@ -20,11 +20,17 @@
 
 <!-- External JS -->
 <script src="https://kit.fontawesome.com/6a1d64b6e4.js" crossorigin="anonymous"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
+  type="text/javascript"></script>
+
 
 <!-- App JS -->
+<script type="text/javascript" src="scripts/mapsApi.js"></script>
 <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 <script type="text/javascript" src="/scripts/app.js"></script>
 <script type="text/javascript" src="/scripts/index.js"></script>
 <script type="text/javascript" src="/scripts/mapPopup.js"></script>
 <script type="text/javascript" src="/scripts/navDropdown.js"></script>
+<script type="text/javascript" src="/scripts/sidePanel.js"></script>
 <script src="../scripts/script.js" defer></script>

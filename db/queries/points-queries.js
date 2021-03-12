@@ -4,7 +4,6 @@ const getMapPoints = mapID => {
   const queryStr = `
   SELECT points.*
   FROM points
-  JOIN maps ON map_id = maps.id
   WHERE map_id = $1
   `;
 
@@ -66,7 +65,7 @@ const editPoint = point => {
 // }
 
 
-const addPoint = point => {
+const addPoint = function (point) {
   const queryStr = `
   INSERT INTO points (map_id, user_id, title, description, longitude, latitude, image_url)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -80,8 +79,9 @@ const addPoint = point => {
     point.description,
     point.longitude,
     point.latitude,
-    "point.image_url" //will be properly implemented when the form is passed
+    point.image_url //will be properly implemented when the form is passed
   ];
+  console.log('values', values);
 
   return db
     .query(queryStr, values)

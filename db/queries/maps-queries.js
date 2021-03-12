@@ -13,9 +13,10 @@ const getMaps = () => {
 
 const getMapsById = id => {
   const queryStr = `
-    SELECT *
+    SELECT *, users.name AS creator
     FROM maps
-    WHERE id = $1
+    JOIN users ON user_id = users.id
+    WHERE maps.id = $1
   `;
 
   return db
@@ -34,17 +35,6 @@ const addMap = map => {
 
   return db
     .query(queryStr, values)
-    .then(res => res.rows);
-};
-
-const deleteMap = mapId => {
-  const queryStr = `
-    DELETE FROM maps
-    WHERE id = $1
-  `;
-
-  return db
-    .query(queryStr, [mapId])
     .then(res => res.rows);
 };
 
@@ -68,6 +58,5 @@ module.exports = {
   getMaps,
   getMapsById,
   addMap,
-  deleteMap,
   editMap
 };

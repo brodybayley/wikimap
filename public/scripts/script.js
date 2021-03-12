@@ -1,35 +1,32 @@
-const tabs = document.querySelectorAll('[data-tab-target]')
-console.log('tabs:', tabs)
-const tabContents = document.querySelectorAll('[data-tab-content]')
+/* global $ */
+/* global document */
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.tabTarget)
-    tabContents.forEach(tabContent => {
-      tabContent.classList.remove('active')
-    })
-    tabs.forEach(tab => {
-      tab.classList.remove('active')
-    })
-    tab.classList.add('active')
-    target.classList.add('active')
-  })
-})
+$(() => {
 
-//JS for kebab menu
-const kebab = document.querySelector('.kebab'),
-  middle = document.querySelector('.middle'),
-  cross = document.querySelector('.cross'),
-  dropdown = document.querySelector('.dropdown');
+  const tabs = document.querySelectorAll('[data-tab-target]');
+  const tabContents = document.querySelectorAll('[data-tab-content]');
 
-kebab.addEventListener('click', function () {
-  middle.classList.toggle('active');
-  cross.classList.toggle('active');
-  dropdown.classList.toggle('active');
-})
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.querySelector(tab.dataset.tabTarget);
+      tabContents.forEach(tabContent => {
+        tabContent.classList.remove('active');
+      });
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+      });
+      tab.classList.add('active');
+      target.classList.add('active');
+    });
+  });
 
-// Controls back arrow
-function goBack() {
-  window.history.back();
-}
+  $('#arrow-back-button').on('click', event => {
+    event.preventDefault();
+    $('#custom-point-feed').toggle();
+    $('#custom-map-feed').toggle();
+  });
+});
+
+
+
 
