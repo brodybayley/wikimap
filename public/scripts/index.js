@@ -8,7 +8,7 @@ $(() => {
         <h1>${map.title}</h1>
         <p class="description-text">${map.description}</p>
         <div class="map-cta">
-          <button class="button-text">Check Out Map</button>
+            <a class="anchor-button button-text" href='/maps'>Check Out Map</a>
         </div>
       </div>
       <div class="img-mask">
@@ -29,7 +29,7 @@ $(() => {
         <h1>${map.title}</h1>
         <p class="description-text">${map.description}</p>
         <div class="map-cta">
-          <button class="button-text">Check Out Map</button>
+            <a class="anchor-button button-text" href='/maps'>Check Out Map</a>
         </div>
       </div>
     </div>
