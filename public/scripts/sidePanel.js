@@ -4,7 +4,7 @@ $(() => {
   // Load map points
   const createPointItem = point => {
     let $point = $('<p>')
-      .text(point.title)
+      .text(`📍 ${point.title}`)
       .addClass('pin-text');
     return $point;
   };
@@ -35,7 +35,7 @@ $(() => {
     return $map;
   };
 
-  const renderMaps = maps => {
+  const renderMyMaps = maps => {
     $('#my-maps').empty();
 
     for (let map of maps) {
@@ -43,14 +43,40 @@ $(() => {
     }
   };
 
-  const loadMaps = () => {
+  const loadMyMaps = () => {
     const userId = 3;
     $.get({
       url: `/api/users/${userId}`,
       dataType: 'json'
     })
-      .then(res => renderMaps(res))
+      .then(res => renderMyMaps(res))
       .catch(err => console.log(err));
   };
-  loadMaps();
+  loadMyMaps();
+
+
+  // Load user favourited maps
+  const createFavItem = map => {
+    let $map = $('<p>').text(map.title);
+    return $map;
+  };
+
+  const renderFavMaps = maps => {
+    $('#my-favourites').empty();
+
+    for (let map of maps) {
+      $('#my-favourites').append(createFavItem(map));
+    }
+  };
+
+  const loadFavMaps = () => {
+    const userId = 3;
+    $.get({
+      url: `/api/users/${userId}/favourites`,
+      dataType: 'json'
+    })
+      .then(res => renderFavMaps(res))
+      .catch(err => console.log(err));
+  };
+  loadFavMaps();
 });
