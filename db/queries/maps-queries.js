@@ -13,9 +13,10 @@ const getMaps = () => {
 
 const getMapsById = id => {
   const queryStr = `
-    SELECT *
+    SELECT *, users.name AS creator
     FROM maps
-    WHERE id = $1
+    JOIN users ON user_id = users.id
+    WHERE maps.id = $1
   `;
 
   return db
