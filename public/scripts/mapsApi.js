@@ -14,13 +14,7 @@
 // });
 
 function initMap() {
-<<<<<<< HEAD
-    const mapId = 2;
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: { lat: 49.2827, lng: -123.1207 },
-=======
-  const mapId = 1;
+  const mapId = 2;
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 8,
     center: { lat: 49.2827, lng: -123.1207 },
@@ -30,7 +24,6 @@ function initMap() {
     let marker = new google.maps.Marker({
       position: new google.maps.LatLng(coords),
       map: map
->>>>>>> brody-tinkering
     });
   };
   $.get({
@@ -57,7 +50,6 @@ function initMap() {
 }
 
 const addPoint = ({ latitude, longitude }, data) => {
-<<<<<<< HEAD
     console.log('addPoint called')
     const mapId = 2;
     const title = data[0].value;
@@ -75,32 +67,6 @@ const addPoint = ({ latitude, longitude }, data) => {
         url: `/api/maps/${mapId}/points`,
         // data: $('#point-form').serialize()
         data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
-=======
-  console.log('addPoint called')
-  const mapId = 1;
-  const title = data[0].value;
-  const description = data[1].value;
-  const image_url = data[2].value;
-  //     point.map_id,
-  //     point.user_id,
-  //     point.title,
-  //     point.description,
-  //     point.longitude,
-  //     point.latitude,
-  //     point.image_url
-  //   ];
-  $.post({
-    url: `/api/maps/${mapId}/points`,
-    // data: $('#point-form').serialize()
-    data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
-  })
-    .then((res) => {
-      console.log('res', res);
-    }
-    )
-    .catch((err) => {
-      console.log('err', err)
->>>>>>> brody-tinkering
     })
   // return db.query(`INSERT INTO POINTS (user_id, map_id, title, latitude, longitude)
   //      VALUES ($1, $2, $3, $4, $5)
