@@ -1,4 +1,5 @@
 /* global $ */
+/* global window */
 
 $(() => {
   // Map form pop up appears
@@ -39,7 +40,7 @@ $(() => {
       url: '/api/maps',
       data: $('form').serialize(),
     })
-      .then(res => {
+      .then(() => {
         window.location.replace('http://localhost:8080/maps');
       })
       .catch(err => console.log(err));

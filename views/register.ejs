@@ -5,13 +5,26 @@
   <%- include('partials/_head') %>
 </head>
 <%- include('partials/_header') %>
-
 <body>
-  <h1>Create Account</h1>
-  <form action="/register" method="POST">
-    <input type="email" name="email" placeholder="Type your email">
-    <input type="password" name="password" placeholder="Type your password">
-    <button class="btn btn-primary button-text" type="submit">Log in!</button>
-  </form>
-</body>
+  <main>
+    <h1 class="page-heading">Create Account</h1>
+    <form action="/register" method="POST" class="user-account-form">
+      <div class="form-input">
+        <label for="register-name" class="side-panel-heading">Name:</label>
+        <input type="text" name="name" placeholder="Enter name" required>
+      </div>
+      <div class="form-input">
+        <label for="register-email" class="side-panel-heading">Email:</label>
+        <input type="email" name="email" placeholder="Enter email" required>
+      </div>
+      <div class="form-input">
+        <label for="register-password" class="side-panel-heading">Password:</label>
+        <input type="password" name="password" placeholder="Enter password" required>
+      </div>
+      <div class="form-button">
+        <button class="button-text" type="submit">Sign Up!</button>
+      </div>
+    </form>
+  </body>
+  </main>
 </html>

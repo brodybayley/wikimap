@@ -18,6 +18,12 @@ const getUserByEmail = email => {
     .then(res => res.rows[0]);
 };
 
+const getUserById = id => {
+  return db
+    .query(`SELECT * FROM users WHERE id = $1`, [id])
+    .then(res => res.rows[0]);
+};
+
 const addFavouriteMap = (userId, mapId) => {
   return db
     .query(`
@@ -69,6 +75,7 @@ module.exports = {
   getFavouriteMaps,
   getMyMaps,
   getUserByEmail,
+  getUserById,
   addFavouriteMap,
   addUserMap
 };
