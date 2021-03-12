@@ -24,16 +24,18 @@ $(() => {
   //     created_on: "2021-03-10T21:24:14.466Z"
   //   }
   // ];
-  const mapData = {
-    id: 1,
-    user_id: 1,
-    title: "Construction Sites",
-    description: "Current constructions going on around Vancouver. Be careful of manholes!",
-    created_on: "2021-03-10T21:24:14.466Z"
-  };
+  // const mapData = {
+  //   id: 1,
+  //   user_id: 1,
+  //   title: "Construction Sites",
+  //   description: "Current constructions going on around Vancouver. Be careful of manholes!",
+  //   created_on: "2021-03-10T21:24:14.466Z"
+  // };
 
 
-  console.log($map);
+  // console.log($map);
+
+
 
   const createMapCard = map => {
     const $map = $(`

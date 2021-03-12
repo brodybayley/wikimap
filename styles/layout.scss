@@ -23,17 +23,30 @@ main {
   align-items: center;
 }
 
-div.hero-container {
+div.maplist-container {
   width: 100%;
   display:flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   margin: 4rem 0;
 
-    .hero-description {
-      margin-right: 2rem;
+    .maplist-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 4rem 0;
+    }
+
+    .map-description {
       color: $text-color;
 
+      &.left {
+        margin-right: 2rem;
+      }
+
+      &.right {
+        margin-left: 2rem;
+      }
       h1 {
         font-size: 48px;
         margin: 0;
@@ -44,19 +57,19 @@ div.hero-container {
       }
     }
 
-    .hero-cta {
+    .map-cta {
       margin-top: 48px;
     }
 
     .img-mask {
-      width: 830px;
+      width: 780px;
       height: 400px;
       overflow: hidden;
       border-radius: 3px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
     }
 
-    .hero-map {
+    .map-img {
       width: 100%;
       height: auto;
     }
