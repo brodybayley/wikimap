@@ -49,7 +49,6 @@ router.post("/:map_id/points", (req, res) => {
   // const { userID: user_id } = 42;
   const user_id = 1;
   const { map_id } = req.params;
-  // 
   addPoint({ ...req.body, user_id, map_id })
     .then(point => res.json(point))
     .catch(err => {
