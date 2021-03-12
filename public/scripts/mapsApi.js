@@ -20,7 +20,7 @@ function initMap() {
     });
     const geocoder = new google.maps.Geocoder();
     document.getElementById("submit").addEventListener("click", () => {
-        geocodeAddress(geocoder, map);
+        pointMasterFunction(geocoder, map);
     });
 }
 
@@ -52,8 +52,8 @@ const addPoint = (results) => {
 }
 
 
+function pointMasterFunction(geocoder, resultsMap) {
 
-function geocodeAddress(geocoder, resultsMap) {
     const address = document.getElementById("address").value;
     geocoder.geocode({ address: address }, (results, status) => {
         if (status === "OK") {
@@ -62,9 +62,28 @@ function geocodeAddress(geocoder, resultsMap) {
             //results here is an object, containing a formatted address,
             //and a place_id.
             resultsMap.setCenter(results[0].geometry.location);
-            new google.maps.Marker({
+            let marker = new google.maps.Marker({
                 map: resultsMap,
                 position: results[0].geometry.location,
+            });
+            console.log('ma point', marker);
+            marker.addListener("click", () => {
+                console.log(results);
+                $('#create-pin-popup').toggle();
+                $("#point-form").on("submit", function (event) {
+                    console.log('hello!')
+                    event.preventDefault();
+                    console.log('this is this', this);
+                    const data = $(this).serializeArray();
+                    console.log('data', data);
+                    const title = data[0].value;
+                    const description = data[1].value;
+                    const image_url = data[2].value;
+                    console.log('things!', title, description, image_url);
+
+                });
+                //and now, we can generate the popup, have the user input info with Ajax, and then save their info to the db.
+
             });
         } else {
             alert(
