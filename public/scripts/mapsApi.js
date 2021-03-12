@@ -1,10 +1,10 @@
-
-const addMarker = coords => {
-    let marker = new google.maps.Marker({
-        position: coords,
-        map: map
-    });
-};
+// const addMarker = function (coords) {
+//     console.log('coords', coords);
+//     let marker = new google.maps.Marker({
+//         position: new google.maps.LatLng(coords),
+//         map: map
+//     });
+// };
 
 // let infoWindow = new google.maps.InfoWindow({
 //   content:'<h1>Hello</h1>'
@@ -14,10 +14,35 @@ const addMarker = coords => {
 // });
 
 function initMap() {
+    const mapId = 2;
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 8,
         center: { lat: -34.397, lng: 150.644 },
     });
+    const addMarker = function (coords) {
+        console.log('coords', coords);
+        let marker = new google.maps.Marker({
+            position: new google.maps.LatLng(coords),
+            map: map
+        });
+    };
+    $.get({
+        url: `/api/maps/${mapId}/points`,
+        datatype: 'json'
+    })
+        .then(points => {
+            console.log('points', points)
+            console.log('latitude', points[0]);
+            for (let point of points) {
+                console.log(point);
+                console.log(point.latitude);
+                console.log(point.longitude);
+                addMarker({
+                    lat: point.latitude,
+                    lng: point.longitude,
+                })
+            }
+        })
     const geocoder = new google.maps.Geocoder();
     document.getElementById("submit").addEventListener("click", () => {
         pointMasterFunction(geocoder, map);
@@ -72,13 +97,13 @@ function pointMasterFunction(geocoder, resultsMap) {
             console.log('ma point', marker);
             marker.addListener("click", () => {
                 console.log('results', results[0].geometry.location.lat());
-                $('#create-pin-popup').toggle();
-                $("#point-form").on("submit", function (event) {
+                $('#add-pin-popup').toggle();
+                $("#add-pin-form").on("submit", function (event) {
+                    event.preventDefault();
                     const latitude = results[0].geometry.location.lat();
                     const longitude = results[0].geometry.location.lng();
                     const coordinates = { latitude, longitude }
                     console.log('hello!')
-                    event.preventDefault();
                     console.log('this is this', this);
                     const data = $(this).serializeArray();
                     console.log('data', data);

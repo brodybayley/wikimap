@@ -202,23 +202,22 @@
     </form>
   </div>
 
-  <!-- Add new pin -->
+
   <div class="form-popup" id="add-pin-popup">
-    <form method="POST" action="/:map_id/points" class="map-form">
+    <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Add a Point</label>
         <i id="close-button" class="fas fa-times-circle"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="Enter pin title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" id="input-pin-title" name="title" placeholder="Enter pin title..." required>
+        <textarea type="text" id="input--description" name="description"
           placeholder="Enter pin description..."></textarea>
         <br>
-        <form action="/action_page.php">
+        <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
           <label for="img">Select image:</label>
           <input type="file" id="img" name="img" accept="image/*">
-          <input type="submit">
-        </form>
+          <!-- <input type="submit"> -->
       </div>
       <button type="submit" class="button-text">Add</button>
     </form>
