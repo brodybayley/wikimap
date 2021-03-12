@@ -37,17 +37,6 @@ const addMap = map => {
     .then(res => res.rows);
 };
 
-const deleteMap = mapId => {
-  const queryStr = `
-    DELETE FROM maps
-    WHERE id = $1
-  `;
-
-  return db
-    .query(queryStr, [mapId])
-    .then(res => res.rows);
-};
-
 const editMap = map => {
   const queryStr = `
     UPDATE maps
@@ -68,6 +57,5 @@ module.exports = {
   getMaps,
   getMapsById,
   addMap,
-  deleteMap,
   editMap
 };

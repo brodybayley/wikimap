@@ -15,12 +15,6 @@ $(() => {
     $('#edit-map-popup').toggle();
   });
 
-  $('.delete-map-cta').on('click', event => {
-    event.preventDefault();
-
-    $('#delete-map-popup').toggle();
-  });
-
   $('.add-pin-cta').on('click', event => {
     event.preventDefault();
 

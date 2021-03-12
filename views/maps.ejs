@@ -88,9 +88,8 @@
                   <a class="delete-map-cta" href=#>Delete Map</a>
                 </span>
               </div> -->
-              <div class="edit-delete-buttons">
-                <a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a>
-                <a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a>
+              <div class="edit-map">
+                <a class="edit-map-cta" href=#>Edit a Map</a>
               </div>
               <!-- <ul class="dropdown">
                 <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
@@ -176,20 +175,6 @@
           placeholder="New map description..."></textarea>
       </div>
       <button type="submit" class="button-text">Update</button>
-    </form>
-  </div>
-
-  <!-- Delete a map -->
-  <div class="form-popup" id="delete-map-popup">
-    <form method="DELETE" action="/api/maps/:id" class="map-form">
-      <div class="form-header">
-        <label for="map-form" class="side-panel-heading">Are you sure you want to delete the map?</label>
-      </div>
-      <br>
-      <div class="delete-cancel-buttons">
-        <button type="submit" class="button-text">DELETE</button>
-        <button type="submit" class="button-text">CANCEL</button>
-      </div>
     </form>
   </div>
 
