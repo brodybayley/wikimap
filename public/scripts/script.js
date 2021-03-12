@@ -25,6 +25,17 @@ $(() => {
     $('#custom-point-feed').toggle();
     $('#custom-map-feed').toggle();
   });
+
+  /* when a user clicks, toggle the 'is-animating' class */
+  $(".heart").on('click touchstart', function () {
+    $(this).toggleClass('is_animating');
+    $(this).toggleClass('liked');
+  });
+
+  /*when the animation is over, remove the class*/
+  $(".heart").on('animationend', function () {
+    $(this).toggleClass('is_animating');
+  });
 });
 
 
