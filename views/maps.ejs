@@ -27,9 +27,6 @@
           </div>
           <div class="my-favourites-container">
             <div id="my-favourites" data-tab-content>
-                <p>Testing data favourites</p>
-                <p>Helllllo</p>
-                <p>Holaaaa</p>
             </div>
           </div>
           <span class="absolute-nav-link">
@@ -62,64 +59,24 @@
           <!-- if logged in user, has access to kebab -->
 
           <% if (user) { %>
-
-          <div id="arrow-back-button">
-            <button onclick="goBack()">← Back to Map List</button>
-          </div>
-
+            <span class="button">
+              <a id="arrow-back-button" class="button-text" href=#>← Back to Map List</a>
+            </span>
           <% } %>
-          <div class="point-panel-heading">
-            <li>
-              <p class="map-heading"> Best Eats in Vancouver</p>
-            </li>
-            <% if (user) { %>
-            <div class="kebab-container dropdown">
-              <!-- <div class="kebab">
-                <figure></figure>
-                <figure class="middle"></figure>
-                <p class="cross">x</p>
-                <figure></figure>
-              </div> -->
-              <!-- <div class="kebab-dropdown">
-                <span class="kebab-item">
-                  <a class="edit-map-cta" href=#>Edit Map</a>
-                </span>
-                <span class="kebab-item">
-                  <a class="delete-map-cta" href=#>Delete Map</a>
-                </span>
-              </div> -->
-              <div class="edit-delete-buttons">
-                <a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a>
-                <a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a>
-              </div>
-              <!-- <ul class="dropdown">
-                <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
-                <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
-              </ul> -->
-            </div>
-            <% } %>
-
+          <div id="map-info-container">
           </div>
-          <p class="map-description description-text">Amazing food in and around downtown Vancouver. I'm getting
-            hungry...</p>
-          <h4>Created by: Bob The Hungry Builder</h4>
-        </ul>
-        <% if (user) { %>
-        <div>
-          <span class="selector-bar">
+            </ul>
+            <% if (user) { %>
+              <div>
+                <span class="selector-bar">
+            <a class="edit-map-cta" href=#>✏️ Edit a Map</a>
             <a class="add-to-favourites" href="/:id/favourites">❤️ Add to Favourites</a>
-            <a class="nav-item nav-link add-pin-cta" href=#>📍 Add a New Pin</a>
+            <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a New Pin</a>
           </span>
         </div>
         <% } %>
         <div class="pins-container tab-content">
           <div id="pin-list">
-            <p class="pin-text">Forage</p>
-            <p class="pin-text">Phnom Penh Restaurant</p>
-            <p class="pin-text">Cafe Medina</p>
-            <p class="pin-text">Black + Blue</p>
-            <p class="pin-text">Sal y limon</p>
-            <p class="pin-text">Miku Vancouver</p>
           </div>
           <% if (user) { %>
           <!-- <span class="add-pin-button">
@@ -158,11 +115,11 @@
     <form method="POST" action="/api/maps" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Create a Map</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="Enter map title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="Enter map title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="Enter map description..."></textarea>
       </div>
       <button type="submit" class="button-text">Create</button>
@@ -174,50 +131,37 @@
     <form method="POST" action="/api/maps/:id" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Edit Map</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="New map title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="New map title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="New map description..."></textarea>
       </div>
       <button type="submit" class="button-text">Update</button>
     </form>
   </div>
 
-  <!-- Delete a map -->
-  <div class="form-popup" id="delete-map-popup">
-    <form method="DELETE" action="/api/maps/:id" class="map-form">
-      <div class="form-header">
-        <label for="map-form" class="side-panel-heading">Are you sure you want to delete the map?</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
-      </div>
-      <br>
-      <div class="delete-cancel-buttons">
-        <button type="submit" class="button-text">DELETE</button>
-        <button type="submit" class="button-text">CANCEL</button>
-      </div>
-    </form>
-  </div>
-
-
+  <!-- Add new pin -->
   <div class="form-popup" id="add-pin-popup">
     <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Add a Point</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-pin-title" name="title" placeholder="Enter pin title..." required>
-        <textarea type="text" id="input--description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="Enter pin title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="Enter pin description..."></textarea>
         <br>
         <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
           <label for="img">Select image:</label>
           <input type="file" id="img" name="img" accept="image/*">
-          <!-- <input type="submit"> -->
+          <div class="form-button">
+            <button type="submit" class="button-text">Add</button>
+          </div>
+        </form>
       </div>
-      <button type="submit" class="button-text">Add</button>
     </form>
   </div>
 </body>
