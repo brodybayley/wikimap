@@ -117,10 +117,15 @@ ul.nav {
   display: flex;
   flex-direction: column;
 
-
   .point-panel-heading {
     display: flex;
     flex-direction: row;
+  }
+
+  .pins-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
