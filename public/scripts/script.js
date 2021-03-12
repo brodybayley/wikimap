@@ -20,7 +20,7 @@ tabs.forEach(tab => {
 const kebab = document.querySelector('.kebab'),
   middle = document.querySelector('.middle'),
   cross = document.querySelector('.cross'),
-  dropdown = document.querySelector('.dropdown');
+  dropdown = document.querySelector('.kebab-dropdown');
 
 kebab.addEventListener('click', function () {
   middle.classList.toggle('active');
@@ -32,4 +32,5 @@ kebab.addEventListener('click', function () {
 function goBack() {
   window.history.back();
 }
+
 

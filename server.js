@@ -64,8 +64,13 @@ app.get("/", (req, res) => {
 
 app.get('/brody', (req, res) => {
   const userId = req.session.userId;
-  const templateVars = { user: userId };
-  res.render('brody', templateVars);
+  getUserById(userId)
+    .then(user => {
+      const templateVars = { user };
+      res.render("brody", templateVars);
+    });
+  // const templateVars = { user: userId };
+  // res.render('brody', templateVars);
 });
 
 // temporary map route
