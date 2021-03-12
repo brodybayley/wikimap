@@ -25,7 +25,7 @@
         <button type="submit" class="button-text">Create</button>
       </form>
     </div>
-    <!-- Edit a map -->
+    <!-- Edit a map
     <div class="form-popup" id="edit-map-popup">
       <form method="POST" action="/api/maps/:id" class="map-form">
         <div class="form-header">
@@ -39,8 +39,8 @@
         </div>
         <button type="submit" class="button-text">Update</button>
       </form>
-    </div>
-    <!-- Add new pin -->
+    </div> -->
+    <!-- Add new pin
     <div class="form-popup" id="add-pin-popup">
       <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
         <div class="form-header">
@@ -60,8 +60,8 @@
           </div>
         </div>
       </form>
-    </div>
-    <!-- Edit a point -->
+    </div> -->
+    <!-- Edit a point
     <div class="form-popup" id="edit-point-popup">
       <form method="POST" action="/:map_id/points/:point_id" class="map-form">
         <div class="form-header">
@@ -81,7 +81,7 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
 
     <div class="map-wrapper">
       <div id="custom-map-feed" class="map-nav">
@@ -144,6 +144,63 @@
             <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a Pin</a>
             <a class="nav-item nav-link edit-pin-cta" href=#>✏️ Edit a Pin</a>
           </span>
+        </div>
+        <!-- Edit a point -->
+        <div class="form-popup" id="edit-point-popup">
+          <form method="POST" action="/:map_id/points/:point_id" class="map-form">
+            <div class="form-header">
+              <label for="map-form" class="side-panel-heading">Edit Pin</label>
+              <i class="fas fa-times-circle close-button"></i>
+            </div>
+            <div class="form-input">
+              <input type="text" class="input-map-title" name="title" placeholder="New pin title..." required>
+              <textarea type="text" class="input-map-description" name="description"
+                placeholder="New pin description..."></textarea>
+              <br>
+              <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
+              <label for="img">Select image:</label>
+              <input type="file" id="img" name="img" accept="image/*">
+              <div class="form-button">
+                <button type="submit" class="button-text">Edit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Edit a map -->
+        <div class="form-popup" id="edit-map-popup">
+          <form method="POST" action="/api/maps/:id" class="map-form">
+            <div class="form-header">
+              <label for="map-form" class="side-panel-heading">Edit Map</label>
+              <i class="fas fa-times-circle close-button"></i>
+            </div>
+            <div class="form-input">
+              <input type="text" class="input-map-title" name="title" placeholder="New map title..." required>
+              <textarea type="text" class="input-map-description" name="description"
+                placeholder="New map description..."></textarea>
+            </div>
+            <button type="submit" class="button-text">Update</button>
+          </form>
+        </div>
+        <!-- Add new pin -->
+        <div class="form-popup" id="add-pin-popup">
+          <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
+            <div class="form-header">
+              <label for="map-form" class="side-panel-heading">Add a Pin</label>
+              <i class="fas fa-times-circle close-button"></i>
+            </div>
+            <div class="form-input">
+              <input type="text" class="input-map-title" name="title" placeholder="Enter pin title..." required>
+              <textarea type="text" class="input-map-description" name="description"
+                placeholder="Enter pin description..."></textarea>
+              <br>
+              <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
+              <label for="img">Select image:</label>
+              <input type="file" id="img" name="img" accept="image/*">
+              <div class="form-button">
+                <button type="submit" class="button-text">Add</button>
+              </div>
+            </div>
+          </form>
         </div>
         <% } %>
         <div class="pins-container tab-content">
