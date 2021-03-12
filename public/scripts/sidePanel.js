@@ -44,7 +44,7 @@ $(() => {
   };
 
   const loadMyMaps = () => {
-    const userId = 3;
+    const userId = 4;
     $.get({
       url: `/api/users/${userId}`,
       dataType: 'json'
@@ -70,7 +70,7 @@ $(() => {
   };
 
   const loadFavMaps = () => {
-    const userId = 3;
+    const userId = 4;
     $.get({
       url: `/api/users/${userId}/favourites`,
       dataType: 'json'

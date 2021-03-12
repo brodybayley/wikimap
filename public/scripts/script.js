@@ -41,7 +41,7 @@ $(() => {
   $('#arrow-back-button').on('click', event => {
     event.preventDefault();
 
-    $('#custom-point-feed').toggle();
+    // $('#custom-point-feed').toggle();
     $('#custom-map-feed').toggle();
   });
 
