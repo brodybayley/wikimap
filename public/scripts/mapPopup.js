@@ -28,8 +28,9 @@ $(() => {
   });
 
   // Map form pop up disappears
-  $('#close-button').on('click', () => {
-    $('.form-popup').toggle();
+  $('.close-button').on('click', event => {
+    // $('.form-popup').toggle();
+    $(event.target).closest('.form-popup').toggle();
   });
 
   // Create new map to database

@@ -152,7 +152,7 @@
     <form method="POST" action="/api/maps" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Create a Map</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
         <input type="text" id="input-map-title" name="title" placeholder="Enter map title..." required>
@@ -168,7 +168,7 @@
     <form method="POST" action="/api/maps/:id" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Edit Map</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
         <input type="text" id="input-map-title" name="title" placeholder="New map title..." required>
@@ -184,7 +184,6 @@
     <form method="DELETE" action="/api/maps/:id" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Are you sure you want to delete the map?</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
       </div>
       <br>
       <div class="delete-cancel-buttons">
@@ -199,7 +198,7 @@
     <form method="POST" action="/:map_id/points" class="map-form">
       <div class="form-header">
         <label for="map-form" class="side-panel-heading">Add a Point</label>
-        <i id="close-button" class="fas fa-times-circle"></i>
+        <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
         <input type="text" id="input-map-title" name="title" placeholder="Enter pin title..." required>
@@ -209,10 +208,11 @@
         <form action="/action_page.php">
           <label for="img">Select image:</label>
           <input type="file" id="img" name="img" accept="image/*">
-          <input type="submit">
+          <div class="form-button">
+            <button type="submit" class="button-text">Add</button>
+          </div>
         </form>
       </div>
-      <button type="submit" class="button-text">Add</button>
     </form>
   </div>
 </body>
