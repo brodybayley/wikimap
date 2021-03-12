@@ -62,23 +62,15 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get('/brody', (req, res) => {
+app.get('/maps', (req, res) => {
   const userId = req.session.userId;
   getUserById(userId)
     .then(user => {
       const templateVars = { user };
-      res.render("brody", templateVars);
+      res.render("maps", templateVars);
     });
-  // const templateVars = { user: userId };
-  // res.render('brody', templateVars);
 });
 
-// temporary map route
-app.get('/maps', (req, res) => {
-  const userId = req.session.userId;
-  const templateVars = { user: userId };
-  res.render('maps', templateVars);
-});
 
 app.post('/logout', (req, res) => {
   req.session = null;
