@@ -24,12 +24,12 @@ function initMap() {
     });
 }
 
-const addPoint = (results) => {
+const addPoint = ({ latitude, longitude }, data) => {
     console.log('addPoint called')
     const mapId = 1;
-    const lat = results[0].geometry.location.latitude
-    const long = results[0].geometry.location.longitude
-    const title = results[0].address_components.formatted_address
+    const title = data[0].value;
+    const description = data[1].value;
+    const image_url = data[2].value;
     //     point.map_id,
     //     point.user_id,
     //     point.title,
@@ -38,7 +38,11 @@ const addPoint = (results) => {
     //     point.latitude,
     //     point.image_url
     //   ];
-    $.post(`/api/points/${mapId}/points`, { user_id: 1, map_id: mapId, latitude: lat, title: 'testTitle', image: 'testImage', longitude: long })
+    $.post({
+        url: `/api/points/${mapId}/points`,
+        // data: $('#point-form').serialize()
+        data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
+    })
         .then((res) => {
             console.log('res', res);
         }
@@ -58,9 +62,8 @@ function pointMasterFunction(geocoder, resultsMap) {
     geocoder.geocode({ address: address }, (results, status) => {
         if (status === "OK") {
             console.log('results', results)
-            addPoint(results);
             //results here is an object, containing a formatted address,
-            //and a place_id.
+            //and a place_id
             resultsMap.setCenter(results[0].geometry.location);
             let marker = new google.maps.Marker({
                 map: resultsMap,
@@ -68,22 +71,24 @@ function pointMasterFunction(geocoder, resultsMap) {
             });
             console.log('ma point', marker);
             marker.addListener("click", () => {
-                console.log(results);
+                console.log('results', results[0].geometry.location.lat());
                 $('#create-pin-popup').toggle();
                 $("#point-form").on("submit", function (event) {
+                    const latitude = results[0].geometry.location.lat();
+                    const longitude = results[0].geometry.location.lng();
+                    const coordinates = { latitude, longitude }
                     console.log('hello!')
                     event.preventDefault();
                     console.log('this is this', this);
                     const data = $(this).serializeArray();
                     console.log('data', data);
-                    const title = data[0].value;
-                    const description = data[1].value;
-                    const image_url = data[2].value;
-                    console.log('things!', title, description, image_url);
-
+                    addPoint(coordinates, data);
+                    // const title = data[0].value;
+                    // const description = data[1].value;
+                    // const image_url = data[2].value;
+                    // console.log('things!', title, description, image_url);
                 });
                 //and now, we can generate the popup, have the user input info with Ajax, and then save their info to the db.
-
             });
         } else {
             alert(
