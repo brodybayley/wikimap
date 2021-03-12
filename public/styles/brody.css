@@ -103,7 +103,7 @@
   font-size: 24px;
 }
 
-.map-container-maps {
+.map-container {
   display: flex;
   flex-direction: column;
   align-items: rows;
