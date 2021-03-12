@@ -32,16 +32,20 @@ $(() => {
     created_on: "2021-03-10T21:24:14.466Z"
   };
 
-  const $map = $(`
-    <div class="map-card">
-      <div class="img-mask">
-      <img src="https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=<%= process.env.API_KEY %>" alt="map" class="map-thumbnail">
-      </div>
-      <div class="map-heading">${mapData.title}</div>
-    </div>
-  `);
 
   console.log($map);
+
+  const createMapCard = map => {
+    const $map = $(`
+      <div class="map-card">
+        <div class="img-mask">
+        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=<%= process.env.API_KEY %>" alt="map" class="map-thumbnail">
+        </div>
+        <div class="map-heading">${map.title}</div>
+      </div>
+    `);
+    return $map;
+  };
 
   $('#index-maps-container').append($map);
 
