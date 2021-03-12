@@ -45,7 +45,7 @@ app.use("/api/users", usersRoutes);
 app.use("/register", registerRoutes);
 app.use("/login", loginRoutes);
 app.use("/api/maps", mapsRoutes);
-app.use("/api/points", pointsRoutes);
+app.use("/api/maps", pointsRoutes);
 
 // Temporary helper func, to be moved w/ all other clients routes to clients.js
 const { getUserById } = require('./db/queries/users-queries');

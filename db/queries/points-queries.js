@@ -4,7 +4,6 @@ const getMapPoints = mapID => {
   const queryStr = `
   SELECT points.*
   FROM points
-  JOIN maps ON map_id = maps.id
   WHERE map_id = $1
   `;
 
