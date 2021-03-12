@@ -104,7 +104,7 @@ div.map-container {
 
 }
 
-button, #map-login, #add-pin-cta {
+button, #map-login, #add-pin-cta, #arrow-back-button {
   color: $white-contrast-color;
   background-color: $primary-color;
   border: none;
@@ -124,3 +124,6 @@ button, #map-login, #add-pin-cta {
   font-size: 48px;
 }
 
+#arrow-back-button {
+  font-size: smaller;
+}
