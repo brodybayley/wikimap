@@ -37,28 +37,40 @@ $(() => {
 
 
 
-  const createMapCard = map => {
+  const createMapRow = map => {
     const $map = $(`
-      <div class="map-card">
-        <div class="img-mask">
-        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&key=<%= process.env.API_KEY %>" alt="map" class="map-thumbnail">
+      <div class="maplist-item img-right">
+      <div class="map-description left">
+        <h1>${map.title}</h1>
+        <p class="description-text">${map.description}</p>
+        <div class="map-cta">
+          <button class="button-text">Check Out Map</button>
         </div>
-        <div class="map-heading">${map.title}</div>
       </div>
+      <div class="img-mask">
+        <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/master/w_2560%2Cc_limit/GoogleMapTA.jpg" alt="map" class="map-img">
+      </div>
+    </div>
     `);
     return $map;
   };
 
-  $('#index-maps-container').append($map);
+  const renderMapRows = maps => {
+    $('.index-maps-container').empty();
 
-  // const loadMaps = () => {
-  //   $.ajax({
-  //     url: '/',
-  //     method: 'GET',
-  //     dataType: 'json'
-  //   })
-  //     .then(res => console.log(res));
-  // };
+    for (let map of maps) {
+      $('.index-maps-container').append(createMapRow(map));
+    }
+  };
 
-  // loadMaps();
+  const loadMaps = () => {
+    $.get({
+      url: '/api/maps',
+      dataType: 'json'
+    })
+      .then(res => renderMapRows(res))
+      .catch(err => console.log(err));
+  };
+
+  loadMaps();
 });
