@@ -85,11 +85,21 @@
               <p class="map-heading"> Best Eats in Vancouver</p>
             </li>
             <% if (user) { %>
-            <div class="kebab">
-              <figure></figure>
-              <figure class="middle"></figure>
-              <p class="cross">x</p>
-              <figure></figure>
+            <div class="kebab-container dropdown">
+              <div class="kebab">
+                <figure></figure>
+                <figure class="middle"></figure>
+                <p class="cross">x</p>
+                <figure></figure>
+              </div>
+              <!-- <div class="kebab-dropdown">
+                <span class="kebab-item">
+                  <a class="edit-map-cta" href=#>Edit Map</a>
+                </span>
+                <span class="kebab-item">
+                  <a class="delete-map-cta" href=#>Delete Map</a>
+                </span>
+              </div> -->
               <ul class="kebab-dropdown">
                 <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
                 <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>

@@ -42,6 +42,11 @@ $(() => {
     $('#custom-map-feed').toggle()
   })
 
+  $('.kebab-container').on('click', event => {
+    event.preventDefault();
+
+    $('.kebab-dropdown').toggle();
+  })
 
 });
 

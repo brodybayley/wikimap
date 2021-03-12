@@ -74,40 +74,41 @@ ul.nav {
   }
 }
 
-.kebab-dropdown {
-    position: absolute;
-    right: 0;
-    transition: all 0.25s ease-out;
-    transform: scale(0);
-    transform-origin: 100% 0;
-    box-shadow: $shadow;
+// .kebab-dropdown {
+//     position: absolute;
+//     right: 0;
+//     transition: all 0.25s ease-out;
+//     transform: scale(0);
+//     transform-origin: 100% 0;
+//     box-shadow: $shadow;
+//     border: solid red;
 
-    li {
-      display: block;
-      width: 100%;
-      a {
-        width: 100%;
-        padding: 1em 18px;
-        display: inline-block;
-        white-space: pre;
-        box-sizing: border-box;
-        &:hover {
-          background: lighten($grey, 30%);
-        }
-      }
-    }
+//     li {
+//       display: block;
+//       width: 100%;
+//       a {
+//         width: 100%;
+//         padding: 1em 18px;
+//         display: inline-block;
+//         white-space: pre;
+//         box-sizing: border-box;
+//         &:hover {
+//           background: lighten($grey, 30%);
+//         }
+//       }
+//     }
 
-  &:hover {
-    ul {
-      transform: scale(1);
-    }
-  }
-}
+//   &:hover {
+//     ul {
+//       transform: scale(1);
+//     }
+//   }
+// }
 
-.dropdown.active {
-  transform: scale(1);
-  transition: all 0.25s cubic-bezier(.5,1.8,.9,.8);
-}
+// .dropdown.active {
+//   transform: scale(1);
+//   transition: all 0.25s cubic-bezier(.5,1.8,.9,.8);
+// }
 
 #custom-map-feed {
   display: none;
