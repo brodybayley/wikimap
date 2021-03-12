@@ -86,18 +86,23 @@
           <div class="point-panel-heading">
             <li>
               <p class="map-heading"> Best Eats in Vancouver</p>
+              <p><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></p>
             </li>
             <% if (user) { %>
-            <div class="kebab">
+            <div>
+              <p><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></p>
+              <a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a>
+            </div>
+            <!-- <div class="kebab">
               <figure></figure>
               <figure class="middle"></figure>
               <p class="cross">x</p>
-              <figure></figure>
-              <ul class="kebab-dropdown">
-                <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
-                <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
-              </ul>
-            </div>
+              <figure></figure> -->
+            <ul class="kebab-dropdown">
+              <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
+              <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
+            </ul>
+            <!-- </div> -->
             <% } %>
 
           </div>
