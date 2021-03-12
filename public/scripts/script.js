@@ -1,6 +1,5 @@
 /* global $ */
 /* global document */
-/* global window */
 
 $(() => {
 
@@ -21,36 +20,11 @@ $(() => {
     });
   });
 
-  //JS for kebab menu
-  const kebab = document.querySelector('.kebab'),
-    middle = document.querySelector('.middle'),
-    cross = document.querySelector('.cross'),
-    dropdown = document.querySelector('.kebab-dropdown');
-
-  kebab.addEventListener('click', () => {
-    middle.classList.toggle('active');
-    cross.classList.toggle('active');
-    dropdown.classList.toggle('active');
-  });
-
-  // Controls back arrow
-  function goBack() {
-    window.history.back();
-  }
-
   $('#arrow-back-button').on('click', event => {
     event.preventDefault();
-
-    // $('#custom-point-feed').toggle();
+    $('#custom-point-feed').toggle();
     $('#custom-map-feed').toggle();
   });
-
-  $('.kebab-container').on('click', event => {
-    event.preventDefault();
-
-    $('.kebab-dropdown').toggle();
-  });
-
 });
 
 

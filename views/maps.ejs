@@ -62,53 +62,21 @@
           <!-- if logged in user, has access to kebab -->
 
           <% if (user) { %>
-
             <span class="button">
               <a id="arrow-back-button" class="button-text" href=#>← Back to Map List</a>
             </span>
-          <!-- <div id="arrow-back-button">
-            <button onclick="goBack()">← Back to Map List</button>
-          </div> -->
-
           <% } %>
           <div class="point-panel-heading">
-            <li>
-              <p class="map-heading"> Best Eats in Vancouver</p>
-            </li>
-            <% if (user) { %>
-            <div class="kebab-container dropdown">
-              <!-- <div class="kebab">
-                <figure></figure>
-                <figure class="middle"></figure>
-                <p class="cross">x</p>
-                <figure></figure>
-              </div> -->
-              <!-- <div class="kebab-dropdown">
-                <span class="kebab-item">
-                  <a class="edit-map-cta" href=#>Edit Map</a>
-                </span>
-                <span class="kebab-item">
-                  <a class="delete-map-cta" href=#>Delete Map</a>
-                </span>
-              </div> -->
-              <div class="edit-map">
-                <a class="edit-map-cta" href=#>Edit a Map</a>
-              </div>
-              <!-- <ul class="dropdown">
-                <li><a class="nav-item nav-link edit-map-cta" href=#>Edit a Map</a></li>
-                <li><a class="nav-item nav-link delete-map-cta" href=#>Delete Map</a></li>
-              </ul> -->
+            <p class="map-heading"> Best Eats in Vancouver</p>
             </div>
-            <% } %>
-
-          </div>
-          <p class="map-description description-text">Amazing food in and around downtown Vancouver. I'm getting
-            hungry...</p>
-          <h4>Created by: Bob The Hungry Builder</h4>
-        </ul>
-        <% if (user) { %>
-        <div>
-          <span class="selector-bar">
+            <p class="map-description description-text">Amazing food in and around downtown Vancouver. I'm getting
+              hungry...</p>
+              <h4>Created by: Bob The Hungry Builder</h4>
+            </ul>
+            <% if (user) { %>
+              <div>
+                <span class="selector-bar">
+            <a class="edit-map-cta" href=#>✏️ Edit a Map</a>
             <a class="add-to-favourites" href="/:id/favourites">❤️ Add to Favourites</a>
             <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a New Pin</a>
           </span>
@@ -157,8 +125,8 @@
         <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="Enter map title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="Enter map title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="Enter map description..."></textarea>
       </div>
       <button type="submit" class="button-text">Create</button>
@@ -173,8 +141,8 @@
         <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="New map title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="New map title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="New map description..."></textarea>
       </div>
       <button type="submit" class="button-text">Update</button>
@@ -189,8 +157,8 @@
         <i class="fas fa-times-circle close-button"></i>
       </div>
       <div class="form-input">
-        <input type="text" id="input-map-title" name="title" placeholder="Enter pin title..." required>
-        <textarea type="text" id="input-map-description" name="description"
+        <input type="text" class="input-map-title" name="title" placeholder="Enter pin title..." required>
+        <textarea type="text" class="input-map-description" name="description"
           placeholder="Enter pin description..."></textarea>
         <br>
         <form action="/action_page.php">
