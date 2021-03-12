@@ -3,34 +3,45 @@
 
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Simple Map</title>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="scripts/mapsApi.js">
+      </script>
+  </head>
+  <body>
+    <h1>Map Page</h1>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW" />
+      <input id="submit" type="button" value="Find" />
+    </div>
+    <div id="map"></div>
+    <div class="form-popup" id="create-pin-popup">
+      <form method="POST" action="/api/maps" class="point-form" id="point-form">
+        <div class="form-header">
+          <label for="map-form" class="side-panel-heading">Tell us About This Place</label>
+          <i id="close-button" class="fas fa-times-circle"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" id="input-point-title" name="title" placeholder="Enter location title..." required>
+          <textarea type="text" id="input-point-description" name="description" placeholder="Enter location description..."></textarea>
+          <input type="text" id="input-point-image-url" name="image-url" placeholder="Enter url link to image..." required>
+        </div>
+        <button type="submit" class="submitButton-text">Create</button>
+      </form>
+    </div>
 
-<head>
-  <title>Simple Map</title>
-  <style>
-    #map {
-      height: 400px;
-      width: 100%;
-    }
-  </style>
-  <script src="scripts/mapsApi.js">
-  </script>
-</head>
+    
 
-<body>
-  <h1>Map Page</h1>
-  <div id="floating-panel">
-    <input id="address" type="textbox" value="Sydney, NSW" />
-    <input id="submit" type="button" value="Find" />
-  </div>
-  <div id="map"></div>
-
-
-
-
-  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
-    type="text/javascript"></script>
-</body>
-
-</html> -->
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      async defer src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.API_KEY %>&callback=initMap&libraries=&v=weekly"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>
