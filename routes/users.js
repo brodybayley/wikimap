@@ -8,6 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const { addFavouriteMap, registerUser, getFavouriteMaps, getMyMaps, getUserByEmail } = require('../db/queries/users-queries');
+const db = require('../lib/db');
 
 
 const login = (email, password) => {
@@ -78,8 +79,8 @@ router.get("/:id/favourites", (req, res) => {
 });
 
 router.post("/:id/favourites", (req, res) => {
-  const userId = req.params.id;
-  const mapId = req.body.mapId;
+  // const userId = req.params.id;
+  // const mapId = req.body.mapId;
   addFavouriteMap(userId, mapId)
     .then(() => {
       return getFavouriteMaps(userId);
@@ -90,5 +91,7 @@ router.post("/:id/favourites", (req, res) => {
         .json({ error: err.message });
     });
 });
+
+//addFavouriteMap is meant to add info to db using an ajax call to custompointfeed.
 
 module.exports = router;

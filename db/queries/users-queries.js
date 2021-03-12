@@ -24,7 +24,7 @@ const getUserById = id => {
     .then(res => res.rows[0]);
 };
 
-const addFavouriteMap = (userId, mapId) => {
+const addFavouriteMap = ({ userId, mapId) => {
   return db
     .query(`
       INSERT into favourites (user_id, map_id) VALUES ($1, $2)
