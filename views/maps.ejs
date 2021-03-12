@@ -10,6 +10,58 @@
 <body>
   <main>
     <!-- logged in user seeing their maps and favourited maps -->
+    <!-- Create a map -->
+    <div class="form-popup" id="create-map-popup">
+      <form method="POST" action="/api/maps" class="map-form">
+        <div class="form-header">
+          <label for="map-form" class="side-panel-heading">Create a Map</label>
+          <i class="fas fa-times-circle close-button"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" class="input-map-title" name="title" placeholder="Enter map title..." required>
+          <textarea type="text" class="input-map-description" name="description"
+            placeholder="Enter map description..."></textarea>
+        </div>
+        <button type="submit" class="button-text">Create</button>
+      </form>
+    </div>
+    <!-- Edit a map -->
+    <div class="form-popup" id="edit-map-popup">
+      <form method="POST" action="/api/maps/:id" class="map-form">
+        <div class="form-header">
+          <label for="map-form" class="side-panel-heading">Edit Map</label>
+          <i class="fas fa-times-circle close-button"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" class="input-map-title" name="title" placeholder="New map title..." required>
+          <textarea type="text" class="input-map-description" name="description"
+            placeholder="New map description..."></textarea>
+        </div>
+        <button type="submit" class="button-text">Update</button>
+      </form>
+    </div>
+    <!-- Add new pin -->
+    <div class="form-popup" id="add-pin-popup">
+      <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
+        <div class="form-header">
+          <label for="map-form" class="side-panel-heading">Add a Point</label>
+          <i class="fas fa-times-circle close-button"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" class="input-map-title" name="title" placeholder="Enter pin title..." required>
+          <textarea type="text" class="input-map-description" name="description"
+            placeholder="Enter pin description..."></textarea>
+          <br>
+          <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
+          <label for="img">Select image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
+          <div class="form-button">
+            <button type="submit" class="button-text">Add</button>
+          </div>
+      </form>
+    </div>
+    </form>
+    </div>
     <div class="map-wrapper">
       <div id="custom-map-feed" class="map-nav">
         <% if (user) { %>
@@ -20,9 +72,9 @@
         <div class="tab-content">
           <div class="my-maps-container">
             <div id="my-maps" data-tab-content class="active">
-                <p>Testing data</p>
-                <p>More test data</p>
-                <p>more test data</p>
+              <p>Testing data</p>
+              <p>More test data</p>
+              <p>more test data</p>
             </div>
           </div>
           <div class="my-favourites-container">
@@ -51,24 +103,20 @@
         <% } %>
       </div>
 
-      <!-- custom map feed ends -->
-
-      <!-- individual map + points -->
       <div id="custom-point-feed class=" map-nav">
         <ul class="nav">
-          <!-- if logged in user, has access to kebab -->
 
           <% if (user) { %>
-            <span class="button">
-              <a id="arrow-back-button" class="button-text" href=#>← Back to Map List</a>
-            </span>
+          <span class="button">
+            <a id="arrow-back-button" class="button-text" href=#>← Back to Map List</a>
+          </span>
           <% } %>
           <div id="map-info-container">
           </div>
-            </ul>
-            <% if (user) { %>
-              <div>
-                <span class="selector-bar">
+        </ul>
+        <% if (user) { %>
+        <div>
+          <span class="selector-bar">
             <a class="edit-map-cta" href=#>✏️ Edit a Map</a>
             <a class="add-to-favourites" href="/:id/favourites">❤️ Add to Favourites</a>
             <a class="nav-item nav-link add-pin-cta" href=#>➕ Add a New Pin</a>
@@ -79,16 +127,9 @@
           <div id="pin-list">
           </div>
           <% if (user) { %>
-          <!-- <span class="add-pin-button">
-            <a id="add-pin-cta" class="button-text" href="#">Add a New Pin</a>
-          </span>
-          <br> -->
         </div>
       </div>
       <% } %>
-      <!-- <span class="absolute-nav-link">
-            <a class="nav-item nav-link add-pin-cta" href=#>Add a New Pin</a>
-          </span> -->
     </div>
 
     </div>
@@ -109,61 +150,6 @@
 
   </main>
 
-
-  <!-- Create a map -->
-  <div class="form-popup" id="create-map-popup">
-    <form method="POST" action="/api/maps" class="map-form">
-      <div class="form-header">
-        <label for="map-form" class="side-panel-heading">Create a Map</label>
-        <i class="fas fa-times-circle close-button"></i>
-      </div>
-      <div class="form-input">
-        <input type="text" class="input-map-title" name="title" placeholder="Enter map title..." required>
-        <textarea type="text" class="input-map-description" name="description"
-          placeholder="Enter map description..."></textarea>
-      </div>
-      <button type="submit" class="button-text">Create</button>
-    </form>
-  </div>
-
-  <!-- Edit a map -->
-  <div class="form-popup" id="edit-map-popup">
-    <form method="POST" action="/api/maps/:id" class="map-form">
-      <div class="form-header">
-        <label for="map-form" class="side-panel-heading">Edit Map</label>
-        <i class="fas fa-times-circle close-button"></i>
-      </div>
-      <div class="form-input">
-        <input type="text" class="input-map-title" name="title" placeholder="New map title..." required>
-        <textarea type="text" class="input-map-description" name="description"
-          placeholder="New map description..."></textarea>
-      </div>
-      <button type="submit" class="button-text">Update</button>
-    </form>
-  </div>
-
-  <!-- Add new pin -->
-  <div class="form-popup" id="add-pin-popup">
-    <form method="POST" action="/:map_id/points" class="map-form" id="add-pin-form">
-      <div class="form-header">
-        <label for="map-form" class="side-panel-heading">Add a Point</label>
-        <i class="fas fa-times-circle close-button"></i>
-      </div>
-      <div class="form-input">
-        <input type="text" class="input-map-title" name="title" placeholder="Enter pin title..." required>
-        <textarea type="text" class="input-map-description" name="description"
-          placeholder="Enter pin description..."></textarea>
-        <br>
-        <input type="text" id="input-image-url" name="image-url" placeholder="enter-image-url" required>
-          <label for="img">Select image:</label>
-          <input type="file" id="img" name="img" accept="image/*">
-          <div class="form-button">
-            <button type="submit" class="button-text">Add</button>
-          </div>
-        </form>
-      </div>
-    </form>
-  </div>
 </body>
 
 </html>
