@@ -1,13 +1,13 @@
 /* global $ */
 
 $(() => {
+  // Load map points
   const createPointItem = point => {
     let $point = $('<p>')
       .text(point.title)
       .addClass('pin-text');
     return $point;
   };
-
 
   const renderPoints = points => {
     $('#pin-list').empty();
@@ -16,8 +16,6 @@ $(() => {
       $('#pin-list').append(createPointItem(point));
     }
   };
-
-  renderPoints(data);
 
   const loadPoints = () => {
     const mapId = 2;
@@ -31,22 +29,22 @@ $(() => {
 
   loadPoints();
 
+  // Load user created maps
+  const data =
+    {
+      "id": 1,
+      "user_id": 1,
+      "title": "Construction Sites",
+      "description": "Current constructions going on around Vancouver. Be careful of manholes!",
+      "created_on": "2021-03-12T04:11:30.291Z"
+    };
 
-  // const data =
-  //   {
-  //     "id": 1,
-  //     "user_id": 1,
-  //     "title": "Construction Sites",
-  //     "description": "Current constructions going on around Vancouver. Be careful of manholes!",
-  //     "created_on": "2021-03-12T04:11:30.291Z"
-  //   };
+  const createMapItem = map => {
+    let $map = $('<p>').text(map.title);
+    return $map;
+  };
 
-  // const createMapItem = map => {
-
-  //   let $map = $('<p>').text(map.title);
-  //   return $map;
-  // };
-
+  $('#my-maps').append(createMapItem(data));
   // console.log(createMapItem(data));
 
   // const renderMaps = maps => {
