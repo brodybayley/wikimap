@@ -6,7 +6,7 @@ WikiMaps is a multi-page collaborative app that allows users to create customize
 
 !["Screenshot of monitor size"](https://github.com/brodybayley/tweeter/blob/master/docs/urls-webpage.png)
 
-!["Screenshot of tablet size"](https://github.com/brodybayley/tweeter/blob/master/docs/urls-tablet.png)
+!["Screenshot of map details page"](https://github.com/brodybayley/wikimap/blob/master/docs/edit_screen.png)
 
 !["Screenshot of mobile format"](https://github.com/brodybayley/tweeter/blob/master/docs/urls-mobile.png)
 
