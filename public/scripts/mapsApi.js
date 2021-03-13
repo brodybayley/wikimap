@@ -1,18 +1,3 @@
-// const addMarker = function (coords) {
-//     console.log('coords', coords);
-//     let marker = new google.maps.Marker({
-//         position: new google.maps.LatLng(coords),
-//         map: map
-//     });
-// };
-
-// let infoWindow = new google.maps.InfoWindow({
-//   content:'<h1>Hello</h1>'
-// });
-// marker.addListener('click', function() {
-//   infoWindow.open(map, marker);
-// });
-
 function initMap() {
   const mapId = 2;
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -50,27 +35,15 @@ function initMap() {
 }
 
 const addPoint = ({ latitude, longitude }, data) => {
-    console.log('addPoint called')
-    const mapId = 2;
-    const title = data[0].value;
-    const description = data[1].value;
-    const image_url = data[2].value;
-    //     point.map_id,
-    //     point.user_id,
-    //     point.title,
-    //     point.description,
-    //     point.longitude,
-    //     point.latitude,
-    //     point.image_url
-    //   ];
-    $.post({
-        url: `/api/maps/${mapId}/points`,
-        // data: $('#point-form').serialize()
-        data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
-    })
-  // return db.query(`INSERT INTO POINTS (user_id, map_id, title, latitude, longitude)
-  //      VALUES ($1, $2, $3, $4, $5)
-  //      RETURNING *;`, [userId, mapId, title, latitude, longitude])
+  console.log('addPoint called')
+  const mapId = 2;
+  const title = data[0].value;
+  const description = data[1].value;
+  const image_url = data[2].value;
+  $.post({
+    url: `/api/maps/${mapId}/points`,
+    data: { user_id: 1, map_id: mapId, description: description, latitude: latitude, title: title, image_url: image_url, longitude: longitude }
+  })
 }
 
 
@@ -96,15 +69,9 @@ function pointMasterFunction(geocoder, resultsMap) {
           const latitude = results[0].geometry.location.lat();
           const longitude = results[0].geometry.location.lng();
           const coordinates = { latitude, longitude }
-          console.log('hello!')
-          console.log('this is this', this);
           const data = $(this).serializeArray();
           console.log('data', data);
           addPoint(coordinates, data);
-          // const title = data[0].value;
-          // const description = data[1].value;
-          // const image_url = data[2].value;
-          // console.log('things!', title, description, image_url);
         });
         //and now, we can generate the popup, have the user input info with Ajax, and then save their info to the db.
       });
