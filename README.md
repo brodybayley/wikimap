@@ -1,10 +1,10 @@
 # WikiMaps Project
 
-WikiMaps is a multi-page collaborative app that allows users to create customized maps with the funcionality to add multiple points to each map. Users can also favourite other users maps which will then add the maps to the users profile. 
+WikiMaps is a multi-page collaborative app using Google Maps API that allows users to create customized maps with funcionality to add multiple points to each map. Users can also favourite other users maps which will then add the maps to the users profile. 
 
 # Final Product
 
-!["Screenshot of monitor size"](https://github.com/brodybayley/wikimap/blob/master/docs/map_details_page.png)
+!["Screenshot of welcome page"](https://github.com/brodybayley/wikimap/blob/master/docs/welcome_page.png)
 
 !["Screenshot of map details page"](https://github.com/brodybayley/wikimap/blob/master/docs/map_details_page.png)
 
@@ -21,10 +21,14 @@ WikiMaps is a multi-page collaborative app that allows users to create customize
 - Express
 - Node 5.10.x or above
 - Body-parser
-- Chance
-- Md5
+- Node-sass-middleware
+- PG
+- dotenv
+- cookie-session
 
 ## Using application
-- Input text into the 'what are you humming about' text box and press 'tweet'.
-- Tweet should be listed below and you should be able to scroll through all tweets in feed.
+- Log in or register
+- Press 'Create a Map' or press one of the 'Check Out Map' buttons
+- From the map details page select 'Add a Pin' or 'Edit a Pin' to add or edit pins
+- Press the hear icon if you want to favourite another users map and add it to your profile
 
